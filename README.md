@@ -11,3 +11,5 @@
 * 1:15; create react application from template
 * 1:45; add env and initiate firestore with auth for application
 * 2:25; update file structure and create file tree
+* 3:10; add basic setup of home page and auth
+* 3:45; restructure chem controller
