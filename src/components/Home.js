@@ -1,15 +1,16 @@
-// import { db } from './../firebase.js'
 import React from 'react';
 import './Home.css';
 
 const Home = () => {
   return (
-    <div id="home" className="home">
-      <div className="left-column">
-        <h1>Seth Gonzales</h1>
-        <p>FULL STACK DEVELOPER</p>
-      </div>
-      <div className="right-column">
+    <div className="home">
+      <div className="text">
+        <h1>Simulations for your K-12 Classroom</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat, quam sed finibus convallis, quam
+          odio convallis sapien.
+        </p>
+        {/* Add more filler text or content */}
       </div>
     </div>
   );

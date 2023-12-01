@@ -10,19 +10,21 @@ capstone
 |  |-manafest.json
 |-src/
 |  |-components/
-|  |  |-Auth/
+|  |  |-SignIn/
+|  |  |  |-SignIn.js/
+|  |  |  |-SignIn.css/
 |  |  |-img/
 |  |  |-Simulations/
 |  |  |  |-StatesOfMatter/
 |  |  |  |  |-StatesOfMatter.js
 |  |  |  |  |-StatesOfMatter.css
 |  |  |-ChemControl.js
-|  |  |-Footer.js
 |  |  |-Footer.css
-|  |  |-Header.js
+|  |  |-Footer.js
 |  |  |-Header.css
-|  |  |-Home.js
+|  |  |-Header.js
 |  |  |-Home.css
+|  |  |-Home.js
 |  |-App.js
 |  |-firebase.js
 |  |-index.css

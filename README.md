@@ -10,3 +10,4 @@
 * 12:15; game to gh and deploy to gh-pages
 * 1:15; create react application from template
 * 1:45; add env and initiate firestore with auth for application
+* 2:25; update file structure and create file tree
