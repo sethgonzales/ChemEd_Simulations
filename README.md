@@ -6,3 +6,4 @@
 * 10:00: Continue udemy tutorial on for breakout game with particles.
 * 10:40; Continue udemy tutorial 
 * 11:20; Continue udemy tutorial learn how to move objects in canvas
+* 12:00; Complete udemy tutorial for using canvas and creating breakout game with moving objects
