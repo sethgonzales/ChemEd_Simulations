@@ -7,5 +7,6 @@
 * 10:40; Continue udemy tutorial 
 * 11:20; Continue udemy tutorial learn how to move objects in canvas
 * 12:00; Complete udemy tutorial for using canvas and creating breakout game with moving objects
-12:15; game to gh and deploy to gh-pages
-1:15 create react application from template
+* 12:15; game to gh and deploy to gh-pages
+* 1:15; create react application from template
+* 1:40; add env and initiate firestore for application
