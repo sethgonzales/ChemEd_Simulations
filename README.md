@@ -9,4 +9,4 @@
 * 12:00; Complete udemy tutorial for using canvas and creating breakout game with moving objects
 * 12:15; game to gh and deploy to gh-pages
 * 1:15; create react application from template
-* 1:40; add env and initiate firestore for application
+* 1:45; add env and initiate firestore with auth for application
