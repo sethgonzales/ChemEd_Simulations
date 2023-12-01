@@ -1,0 +1,39 @@
+File Tree
+
+capstone
+|-.firebase/
+|-build/
+|-node_modules/
+|-public/
+|  |-favicon.ico
+|  |-index.html
+|  |-manafest.json
+|-src/
+|  |-components/
+|  |  |-Auth/
+|  |  |-img/
+|  |  |-Simulations/
+|  |  |  |-StatesOfMatter/
+|  |  |  |  |-StatesOfMatter.js
+|  |  |  |  |-StatesOfMatter.css
+|  |  |-ChemControl.js
+|  |  |-Footer.js
+|  |  |-Footer.css
+|  |  |-Header.js
+|  |  |-Header.css
+|  |  |-Home.js
+|  |  |-Home.css
+|  |-App.js
+|  |-firebase.js
+|  |-index.css
+|  |-index.js
+|  |-reportWebVitals.js
+|  |-reportWebVitals.js
+|-.env
+|-.firebaserc
+|-.gitignore
+|-firebase.json
+|-package-lock.json
+|-package.json
+|-README.md
+
