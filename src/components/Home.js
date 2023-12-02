@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 
-const Home = () => {
+const Home = ({ handleReturnHome }) => {
   return (
     <div className="home">
       <div className="text">
@@ -10,7 +10,7 @@ const Home = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat, quam sed finibus convallis, quam
           odio convallis sapien.
         </p>
-        {/* Add more filler text or content */}
+        <button onClick={handleReturnHome}>Return Home</button>
       </div>
     </div>
   );

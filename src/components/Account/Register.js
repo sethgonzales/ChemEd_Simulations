@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth } from '../../firebase.js';
+import { auth } from "./../../firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = () => {
@@ -11,31 +11,25 @@ const Register = () => {
     const password = event.target.password.value;
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setSignUpSuccess(`You've successfully signed up, ${userCredential.user.email}!`)
+        setSignUpSuccess(`You've successfully signed up, ${userCredential.user.email}!`);
       })
       .catch((error) => {
-        setSignUpSuccess(`There was an error signing up: ${error.message}!`)
+        setSignUpSuccess(`There was an error signing up: ${error.message}!`);
       });
-  }
+  };
 
   return (
     <React.Fragment>
       <h1>Register for an Account</h1>
-      {signUpSuccess}
+      {signUpSuccess && <p>{signUpSuccess}</p>}
       <form onSubmit={doSignUp}>
-        <input
-          type='text'
-          name='email'
-          placeholder='email' />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password' />
-        <button type='submit'>Sign up</button>
+        <input type="text" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Sign up</button>
       </form>
-
+      
     </React.Fragment>
   );
-}
+};
 
 export default Register;

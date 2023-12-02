@@ -10,9 +10,13 @@ capstone
 |  |-manafest.json
 |-src/
 |  |-components/
-|  |  |-SignIn/
-|  |  |  |-SignIn.js/
-|  |  |  |-SignIn.css/
+|  |  |-Account/
+|  |  |  |-AccountDetails.js/
+|  |  |  |-AccountDetails.css/
+|  |  |  |-LogIn.js/
+|  |  |  |-LogIn.css/
+|  |  |  |-Register.js/
+|  |  |  |-Register.css/
 |  |  |-img/
 |  |  |-Simulations/
 |  |  |  |-StatesOfMatter/

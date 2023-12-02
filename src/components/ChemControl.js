@@ -1,49 +1,109 @@
 import React, { useState } from "react";
 import { auth } from './../firebase.js';
 import Home from './Home';
-import SignIn from './Account/SignIn';
+import LogIn from './Account/LogIn';
 import Register from './Account/Register';
 import AccountDetails from './Account/AccountDetails';
-
 
 class ChemControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userAuth: false, //check user authorization
-      simulationList: [], //hold an array of the simulations created
-      selectedSimulation: null, //identify the simulation selected
+      userAuth: false,
+      selectedSimulation: null,
+      logIn: false,
+      registerAccount: false,
+      accountDetails: false,
     };
   }
 
-  handleClick = () => {
-    //when the homepage is active this button will exist for users to click to register an account. This will be at the bottom of the page
-    //on viewing a simulation component this button will be at the bottom of the page for users to return home to
-  }
-
-  handleSignIn = () => {
-    //handle showing the sign-in component
+  handleLogIn = () => {
+    this.setState({
+      logIn: true,
+      registerAccount: false,
+      accountDetails: false,
+    });
   };
- 
+
   handleRegister = () => {
-    //handle showing the register component
-  };
- 
-  HandleSignOut = () => {
-    //handle showing the sign-out component
+    this.setState({
+      logIn: false,
+      registerAccount: true,
+      accountDetails: false,
+    });
   };
 
+  handleLogOut = () => {
+    this.setState({
+      userAuth: false,
+      logIn: false,
+      registerAccount: false,
+      accountDetails: false,
+    });
+  };
 
-  return (
-    <React.Fragment>
-      {currentVisibleState}
-      <div>
-      <button onClick={this.handleClick}>{buttonText}</button>
-      </div>
-    </React.Fragment>
-  )
+  handleShowAccountDetails = () => {
+    this.setState({
+      logIn: false,
+      registerAccount: false,
+      accountDetails: true,
+    });
+  };
+
+  handleReturnHome = () => {
+    this.setState({
+      userAuth: false,
+      selectedSimulation: null,
+      logIn: false,
+      registerAccount: false,
+      accountDetails: false,
+    });
+  };
+
+  render() {
+    let currentVisibleState = null;
+
+    if (this.state.selectedSimulation !== null) {
+      // Logic to render selected simulation
+    } else if (this.state.logIn) {
+      currentVisibleState = <LogIn />;
+    } else if (this.state.registerAccount) {
+      currentVisibleState = <Register />;
+    } else if (this.state.accountDetails) {
+      currentVisibleState = <AccountDetails />;
+    } else {
+      currentVisibleState = <Home />;
+    }
+
+    return (
+      <React.Fragment>
+        {currentVisibleState}
+        {this.state.userAuth && (
+          <div>
+            <button onClick={this.handleShowAccountDetails}>View Account</button>
+            <button onClick={this.handleReturnHome}>Return Home</button>
+          </div>
+        )}
+        {this.state.userAuth ? (
+          <div>
+            {/* Button or link to log out */}
+            <button onClick={this.handleLogOut}>Sign out</button>
+          </div>
+        ) : (
+          {
+            currentVisibleState.type === Home && !this.state.userAuth && (
+
+              <div>
+                <button onClick={this.handleLogIn}>Sign in</button>
+                <button onClick={this.handleRegister}>Register</button>
+                <button onClick={this.handleReturnHome}>Return Home</button>
+
+              </div>
+            )
+          }
+      </React.Fragment>
+    );
+  }
 }
-
-
 
 export default ChemControl;
