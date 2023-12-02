@@ -62,6 +62,7 @@ class ChemControl extends React.Component {
 
   render() {
     let currentVisibleState = null;
+    let homeButtons = null;
 
     if (this.state.selectedSimulation !== null) {
       // Logic to render selected simulation
@@ -73,34 +74,40 @@ class ChemControl extends React.Component {
       currentVisibleState = <AccountDetails />;
     } else {
       currentVisibleState = <Home />;
-    }
 
+      homeButtons = (
+        <div>
+          <button onClick={this.state.userAuth ? this.handleShowAccountDetails : this.handleRegister}>
+            {this.state.userAuth ? "View Account" : "Register"}
+          </button>
+          <button onClick={this.handleReturnHome}>Return Home</button>
+        </div>
+      );
+    }
     return (
       <React.Fragment>
         {currentVisibleState}
-        {this.state.userAuth && (
-          <div>
-            <button onClick={this.handleShowAccountDetails}>View Account</button>
-            <button onClick={this.handleReturnHome}>Return Home</button>
-          </div>
-        )}
-        {this.state.userAuth ? (
-          <div>
-            {/* Button or link to log out */}
-            <button onClick={this.handleLogOut}>Sign out</button>
-          </div>
-        ) : (
-          {
-            currentVisibleState.type === Home && !this.state.userAuth && (
-
-              <div>
-                <button onClick={this.handleLogIn}>Sign in</button>
-                <button onClick={this.handleRegister}>Register</button>
-                <button onClick={this.handleReturnHome}>Return Home</button>
-
-              </div>
-            )
-          }
+        {homeButtons}
+        <div>
+          {this.state.userAuth ? (
+            // For authenticated users
+            <React.Fragment>
+              <button onClick={this.handleShowAccountDetails}>View Account</button>
+              <button onClick={this.handleLogOut}>Sign Out</button>
+            </React.Fragment>
+          ) : (
+            // For non-authenticated users
+            <React.Fragment>
+              {(this.state.logIn || this.state.registerAccount) && (
+                <React.Fragment>
+                  <button onClick={this.handleLogIn}> Sign In</button>
+                  <button onClick={this.handleRegister}>Register</button>
+                </React.Fragment>
+              )}
+              <button onClick={this.handleReturnHome}>Return Home </button>
+            </React.Fragment>
+          )}
+        </div>
       </React.Fragment>
     );
   }

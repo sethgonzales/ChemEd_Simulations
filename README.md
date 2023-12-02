@@ -13,3 +13,5 @@
 * 2:25; update file structure and create file tree
 * 3:10; add basic setup of home page and auth
 * 3:45; restructure chem controller
+* 4:35; restructure chem controller further
+* 4:55; continue the great restructuring of the chem controller to one day conditionally render buttons correctly... one day...

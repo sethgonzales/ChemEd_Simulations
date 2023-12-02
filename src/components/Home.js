@@ -10,7 +10,6 @@ const Home = ({ handleReturnHome }) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat, quam sed finibus convallis, quam
           odio convallis sapien.
         </p>
-        <button onClick={handleReturnHome}>Return Home</button>
       </div>
     </div>
   );
