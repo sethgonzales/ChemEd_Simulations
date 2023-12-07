@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
-const Home = ({ handleReturnHome }) => {
+const Home = ({ userAuth }) => {
   return (
     <div className="home">
       <div className="text">
@@ -10,6 +11,7 @@ const Home = ({ handleReturnHome }) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat, quam sed finibus convallis, quam
           odio convallis sapien.
         </p>
+        {userAuth && <Link to="/account">View Account</Link>}
       </div>
     </div>
   );
