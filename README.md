@@ -27,3 +27,4 @@
 * 10:10: Begin working on simulation
 * 10:50: Randomize particle movement
 * 11:30: Style canvas and particles
+* 12:10: Correct particle movement against wall, create temp slider.

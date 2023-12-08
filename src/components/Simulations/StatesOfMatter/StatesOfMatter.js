@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './StatesOfMatter.css';
 
+
 const StatesOfMatter = () => {
+  const [speed, setSpeed] = useState(1);
   useEffect(() => {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const moleculeCount = 40;
     const moleculeInfo = {
       radius: 5,
-      speed: 1,
+      speed: speed,
     };
 
     const molecules = [];
@@ -36,12 +38,22 @@ const StatesOfMatter = () => {
         molecule.y += molecule.dy;
 
         // Wall collision detection
-        if (molecule.x + molecule.radius > canvas.width || molecule.x - molecule.radius < 0) {
-          molecule.dx *= -1;
+        if (molecule.x + molecule.radius > canvas.width) {
+          molecule.x = canvas.width - molecule.radius; // Reset particle position at wall
+          molecule.dx = -molecule.dx; // Change direction on collision
+        } else if (molecule.x - molecule.radius < 0) {
+          molecule.x = molecule.radius; // Reset particle position at wall
+          molecule.dx = -molecule.dx; // Change direction on collision
         }
-        if (molecule.y + molecule.radius > canvas.height || molecule.y - molecule.radius < 0) {
-          molecule.dy *= -1;
+    
+        if (molecule.y + molecule.radius > canvas.height) {
+          molecule.y = canvas.height - molecule.radius; // Reset particle position at wall
+          molecule.dy = -molecule.dy; // Change direction on collision
+        } else if (molecule.y - molecule.radius < 0) {
+          molecule.y = molecule.radius; // Reset particle position at wall
+          molecule.dy = -molecule.dy; // Change direction on collision
         }
+
 
         // Particle collision detection
         molecules.forEach(otherMolecule => {
@@ -68,21 +80,43 @@ const StatesOfMatter = () => {
         });
       });
 
+      // Update speed based on the state value
+      molecules.forEach(molecule => {
+        const directionX = molecule.dx > 0 ? 1 : -1;
+        const directionY = molecule.dy > 0 ? 1 : -1;
+
+        molecule.dx = directionX * moleculeInfo.speed;
+        molecule.dy = directionY * moleculeInfo.speed;
+      });
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawMolecules();
       requestAnimationFrame(moveMolecules);
     }
-
     moveMolecules();
-  }, []);
+  }, [speed]);
+
+  const handleTempChange = event => {
+    setSpeed(parseFloat(event.target.value));
+  };
 
   return (
-    <div className="simulation">
+    <div className='simulation'>
       <h1>States of Matter</h1>
-      <div id="SOM-container">
+      <div id="SOM-container" className='SOM-container'>
         <canvas id="canvas" width="400" height="400"></canvas>
-        <button id="start-btn" className="btn">Start</button>
       </div>
+      <label htmlFor="speed-slider">Temperature:</label>
+      <input
+        type="range"
+        id="speed-slider"
+        min="0.1"
+        max="5"
+        step="0.1"
+        value={speed}
+        onChange={handleTempChange}
+      />
+      <button id="start-btn" className="btn">Start</button>
     </div>
   );
 };

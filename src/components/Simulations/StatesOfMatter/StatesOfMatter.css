@@ -1,0 +1,15 @@
+.simulation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.simulation h1 {
+  margin: 45px;
+}
+
+.SOM-container canvas{
+  border: solid 2px black;
+  border-radius: 10px;
+}

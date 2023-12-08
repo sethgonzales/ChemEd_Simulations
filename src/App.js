@@ -22,7 +22,7 @@ const App = () => {
     <Router>
       <React.Fragment>
         <Header userAuth={isAuthenticated} />
-        <div class="app-main">
+        <div className="app-main">
           <Routes>
             <Route
               path="/"
