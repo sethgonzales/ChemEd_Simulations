@@ -25,3 +25,5 @@
 * 9:00: Continue trial and error with svg 😔
 * 9:40: Research further into dynamic headers
 * 10:10: Begin working on simulation
+* 10:50: Randomize particle movement
+* 11:30: Style canvas and particles
