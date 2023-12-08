@@ -22,9 +22,11 @@ const StatesOfMatter = () => {
     for (let i = 0; i < moleculeRowCount; i++) {
       molecules[i] = [];
       for (let j = 0; j < moleculeColumnCount; j++) {
-        const x = i * (moleculeInfo.w + moleculeInfo.padding) + moleculeInfo.offsetX;
-        const y = j * (moleculeInfo.h + moleculeInfo.padding) + moleculeInfo.offsetY;
-        molecules[i][j] = { x, y, ...moleculeInfo };
+        const x = Math.random() * (canvas.width - moleculeInfo.w); // Random x within canvas width
+        const y = Math.random() * (canvas.height - moleculeInfo.h); // Random y within canvas height
+        const dx = Math.random() > 0.5 ? moleculeInfo.speed : -moleculeInfo.speed; // Random initial movement on x-axis
+        const dy = Math.random() > 0.5 ? moleculeInfo.speed : -moleculeInfo.speed; // Random initial movement on y-axis
+        molecules[i][j] = { x, y, dx, dy, ...moleculeInfo };
       }
     }
 
