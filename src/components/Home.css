@@ -1,9 +1,14 @@
 .home {
   padding: 20px;
+  text-align: left;
 }
 
-.text {
-  max-width: 800px;
-  margin: 0 auto;
+.home-title {
+  max-width: 100%;
+  margin: 60px;
   text-align: center;
+}
+
+.home li {
+  padding: 20px 0px;
 }

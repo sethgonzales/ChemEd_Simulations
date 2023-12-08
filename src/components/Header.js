@@ -1,19 +1,39 @@
 import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ userAuth }) => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
+  const handleAccountClick = () => {
+    navigate('/account');
+  };
+
+  const handleSimulationClick = (event) => {
+    navigate('/simulations');
+  };
+
+
   return (
     <header className="header">
       <div className="left">
-        <h1>ChemEd Simulations</h1>
+        <Link to="/" className="header-link">
+          <h1>ChemEd Simulations</h1>
+        </Link>
       </div>
       <div className="right">
-        <button className="login-btn">Log In</button>
-        <select className="simulations-dropdown">
-          <option value="StatesOfMatter">States of Matter</option>
-          {/* Add more options as needed */}
-        </select>
+      <button className="user-btn" onClick={handleSimulationClick}>Simulations</button>
+        {!userAuth ? (
+          <button className="user-btn" onClick={handleLoginClick}>Log In</button>
+        ) : (
+          <button className="user-btn" onClick={handleAccountClick}>Account</button>
+        )}
       </div>
+
     </header>
   );
 };

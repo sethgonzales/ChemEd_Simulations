@@ -4,7 +4,7 @@ import './StatesOfMatter.css';
 const StatesOfMatter = () => {
   return (
       <div className="simulation">
-        <h1>ChemEd Simulations</h1>
+        <h1>States of Matter</h1>
       </div>
   );
 };

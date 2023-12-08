@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { auth } from "../../firebase.js";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
+import { auth } from '../../firebase.js';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate, Link } from 'react-router-dom';
 
-const LogIn = () => {
+const LogIn = ({ handleAuthChange }) => {
   const [signInSuccess, setSignInSuccess] = useState(null);
+  const navigate = useNavigate();
+
 
   const doSignIn = (event) => {
     event.preventDefault();
@@ -13,9 +16,11 @@ const LogIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setSignInSuccess(`You've successfully signed in as ${userCredential.user.email}!`);
+        handleAuthChange(true);
+        navigate('/'); 
       })
       .catch((error) => {
-        setSignInSuccess(`There was an error signing in: ${error.message}!`);
+        setSignInSuccess(`There was an error signing in. ${error.message}!`);
       });
   };
 
@@ -28,6 +33,9 @@ const LogIn = () => {
         <input type="password" name="signinPassword" placeholder="Password" />
         <button type="submit">Sign in</button>
       </form>
+
+      <p>Don't have an account? <Link to="/register">Register here</Link></p>
+
     </React.Fragment>
   );
 };

@@ -1,0 +1,22 @@
+.simulation-link {
+  text-decoration: none;
+  color: white;
+  position: relative;
+}
+
+/* Styles for the hover effect */
+.simulation-link::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 0.3s ease; 
+}
+
+.simulation-link:hover::after {
+  width: 100%; 
+}
