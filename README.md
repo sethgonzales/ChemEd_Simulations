@@ -15,3 +15,8 @@
 * 3:45; restructure chem controller
 * 4:35; restructure chem controller further
 * 4:55; continue the great restructuring of the chem controller to one day conditionally render buttons correctly... one day...
+
+
+### Friday, 12/8
+* 8:00: Begin working
+* 8:30: Continue research on dynamic headers using svg background images
