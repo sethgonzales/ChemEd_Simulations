@@ -24,3 +24,4 @@
 * 8:30: Continue research on dynamic headers using svg background images
 * 9:00: Continue trial and error with svg 😔
 * 9:40: Research further into dynamic headers
+* 10:10: Begin working on simulation
