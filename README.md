@@ -29,3 +29,4 @@
 * 11:30: Style canvas and particles
 * 12:10: Correct particle movement against wall, create temp slider.
 * 12:50: Work on particle movement at different states of matter.
+* 1:35: Refactor movement and research alt methods
