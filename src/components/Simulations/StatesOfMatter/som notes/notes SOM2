@@ -82,10 +82,6 @@ const StatesOfMatter = () => {
                 (molecule.x - otherMolecule.x) ** 2 + (molecule.y - otherMolecule.y) ** 2
               );
               if (distance < molecule.radius * 2) {
-                // Handle collision based on states if needed
-                // For example, adjust the directions after collision
-        
-                // Example: Calculate new directions after collision
                 const collisionAngle = Math.atan2(otherMolecule.y - molecule.y, otherMolecule.x - molecule.x);
                 const speed1 = Math.sqrt(molecule.dx ** 2 + molecule.dy ** 2);
                 const speed2 = Math.sqrt(otherMolecule.dx ** 2 + otherMolecule.dy ** 2);

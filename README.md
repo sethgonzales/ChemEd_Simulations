@@ -31,3 +31,5 @@
 * 12:50: Work on particle movement at different states of matter.
 * 1:35: Refactor movement and research alt methods
 * 2:10: Try using React Knova for animation rendering
+* 2:50: Destructure into three separate components and go back to using canvas
+* 3:40: Restructure back into one part... Then back into three...
