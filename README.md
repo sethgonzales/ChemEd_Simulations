@@ -16,9 +16,10 @@
 * 4:35; restructure chem controller further
 * 4:55; continue the great restructuring of the chem controller to one day conditionally render buttons correctly... one day...
 
-###Thursday 12/7
+### Thursday 12/7
 * Refactor project to be route based instead of controller based. Update some styling in the process
 
 ### Friday, 12/8
 * 8:00: Begin working
 * 8:30: Continue research on dynamic headers using svg background images
+* 9:00: Continue trial and error with svg 😔

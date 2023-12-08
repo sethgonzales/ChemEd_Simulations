@@ -8,8 +8,11 @@
   align-items: center;
   padding: 20px;
   overflow: visible;
-  /* background-image: url"./../img/header.svg"; */
-  background-color: #3e43a7;
+  background-image: url(./../img/header.svg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  /* background-color: #3e43a7; */
   height: 100px;
 
   z-index: 999;
@@ -18,9 +21,10 @@
 
 
 .header .header-link {
-  text-decoration: none; 
-  color: white; 
+  text-decoration: none;
+  color: white;
 }
+
 .left {
   flex: 1;
 }
