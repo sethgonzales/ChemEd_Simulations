@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
-const LiquidParticles = () => {
+const GasParticles = () => {
   const canvasRef = useRef(null);
   const particleCount = 25;
   const particleSize = 10;
   const particleGap = 2;
-  const movementFactor = 2;
+  const movementFactor = 3;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -107,8 +107,8 @@ const LiquidParticles = () => {
   }, []);
 
   return (
-    <canvas ref={canvasRef} width={400} height={400} style={{ border: '1px solid #000' }}></canvas>
+    <canvas ref={canvasRef} width={400} height={400}></canvas>
   );
 };
 
-export default LiquidParticles;
+export default GasParticles;

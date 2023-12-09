@@ -9,7 +9,17 @@
   margin: 45px;
 }
 
-.SOM-container canvas{
+.SOM-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
   border: solid 2px black;
   border-radius: 10px;
+}
+
+.solid-canvas-container {
+  position: absolute; /* Position the solid canvas absolutely within its container */
+  top: 300px;
+  left: 50%; /* Position at horizontal center */
+  transform: translate(-50%, -50%); /* Center alignment using transform */
 }
