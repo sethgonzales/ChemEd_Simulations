@@ -33,3 +33,4 @@
 * 2:10: Try using React Knova for animation rendering
 * 2:50: Destructure into three separate components and go back to using canvas
 * 3:40: Restructure back into one part... Then back into three...
+* 4:10: Continue restructuring
