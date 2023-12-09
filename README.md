@@ -1,3 +1,5 @@
+Ye Olde Hosted Link: https://chemed-6a31a.web.app/
+
 ## Research & Planning Log
 ### Friday, 12/1
 * 8:00: Create project README and proposal files. Begin working.
@@ -34,3 +36,5 @@
 * 2:50: Destructure into three separate components and go back to using canvas
 * 3:40: Restructure back into one part... Then back into three...
 * 4:10: Continue restructuring
+* 4:50: Create logic for solid attractive forces. Continue manipulating this logic.
+* 6:00: Retool solids to exist within grids..
