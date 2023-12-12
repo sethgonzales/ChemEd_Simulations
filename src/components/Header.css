@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/eighty-miles');
+@import url('https://fonts.cdnfonts.com/css/upton');
+
 .header {
   position: fixed;
   top: 0;
@@ -12,15 +15,34 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: bottom;
-  background-color: #3e43a7;
+  background-color: #3e43a78f;
   height: 100px;
-
   z-index: 999;
 }
 
+.element-card {
+  background-color: grey;
+  width: 80px;
+  height: 100px;
+  margin: 4px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  transition: transform 0.2s ease-in-out;
+}
 
+.element-card h5,
+.element-card h1 {
+  margin: 6px 0;
+}
+
+.element-card:hover {
+  transform: translateY(-8px);
+}
 
 .header .header-link {
+  display: flex;
   text-decoration: none;
   color: white;
 }
@@ -32,14 +54,24 @@
 .right {
   display: flex;
   align-items: center;
+  padding: 30px;
 }
 
 .user-btn {
-  margin-right: 50px;
+  margin-right: 30px;
   padding: 8px 12px;
-  background-color: #4CAF50;
+  background-color: #20b825;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* .element-card {
+ color: #36b6c2;
+ color: #ff4733;
+ color: #e6da6e;
+ color: #efb814;
+ color: #70b858;
+ color: #1aabb9;
+} */

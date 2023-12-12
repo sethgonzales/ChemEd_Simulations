@@ -7,7 +7,7 @@ const Home = () => {
       <div className="home-title">
         <h1>Simulations for your Science Classroom</h1>
         <p>
-          Discover and engage with science like never before
+          Engage with science like never before
         </p>
       </div>
       <h2>Why Explore ChemEd Simulations?</h2>

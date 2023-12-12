@@ -1,14 +1,17 @@
 .home {
+  letter-spacing: 2px;
   padding: 20px;
   text-align: left;
 }
 
 .home-title {
+  font-size: 30px;
   max-width: 100%;
   margin: 60px;
   text-align: center;
 }
 
 .home li {
-  padding: 20px 0px;
+  padding: 10px 0px;
+  font-size: 20px;
 }
