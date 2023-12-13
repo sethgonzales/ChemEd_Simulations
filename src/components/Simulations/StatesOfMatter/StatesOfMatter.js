@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import './StatesOfMatter.css';
 import SolidParticles from './SolidParticles';
 import LiquidParticles from './LiquidParticles';
-import GasParticles from '../GasParticles';
+import GasParticles from './GasParticles';
 
 const StatesOfMatter = () => {
   const canvasRef = useRef(null);
@@ -20,14 +20,18 @@ const StatesOfMatter = () => {
   };
 
   return (
-    <div className='simulation'>
+    <div className='simulation-page'>
       <h1>States of Matter</h1>
-      <button onClick={toggleState}>Toggle State</button>
-        <h2>{currentState}</h2>
-      <div id="SOM-container" className='SOM-container'>
-        {currentState === 'Solid' && <SolidParticles />}
-        {currentState === 'Liquid' && <LiquidParticles />}
-        {currentState === 'Gas' && <GasParticles />} 
+      <div className='simulation-container'>
+        <div id="SOM-container" className='SOM-container'>
+          {currentState === 'Solid' && <SolidParticles />}
+          {currentState === 'Liquid' && <LiquidParticles />}
+          {currentState === 'Gas' && <GasParticles />}
+        </div>
+        <div className='SOM-control'>
+          <h1>{currentState}</h1>
+          <button onClick={toggleState}>Change State</button>
+        </div>
       </div>
     </div>
   );

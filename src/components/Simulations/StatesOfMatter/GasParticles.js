@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const GasParticles = () => {
   const canvasRef = useRef(null);
-  const particleCount = 25;
+  const particleCount = 36;
   const particleSize = 10;
   const particleGap = 2;
   const movementFactor = 3;

@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react';
 
 const LiquidParticles = () => {
   const canvasRef = useRef(null);
-  const particleCount = 25;
-  const particleSize = 10;
-  const particleGap = 2;
+  const particleCount = 100;
+  const particleSize = 15;
+  const particleGap = 6;
   const movementFactor = 2;
 
   useEffect(() => {
@@ -13,15 +13,16 @@ const LiquidParticles = () => {
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
 
-    const columns = Math.sqrt(particleCount);
-    const rows = Math.sqrt(particleCount);
+    //create columns and rows of molecules at the bottom of the canvas
+    const columns = 25;
+    const rows = 4;
     const particles = [];
 
     // Calculate the center position of the canvas
     const centerX = canvasWidth / 2;
     const bottomY = canvasHeight - (particleSize + particleGap) / 2;
 
-    // Create particles in a square lattice at the bottom center of the canvas
+    // Create particles in a lattice at the bottom center of the canvas
     let count = 0;
     for (let row = rows - 1; row >= 0 && count < particleCount; row--) {
       for (let col = 0; col < columns && count < particleCount; col++) {
@@ -47,25 +48,34 @@ const LiquidParticles = () => {
     }
 
     function updateParticles() {
-      particles.forEach(particle => {
-        // Update particle positions based on movement and considering radius
-        particle.x += particle.dx;
-        particle.y += particle.dy;
+      const liquidMovementSpeed = 1;
+      const gravity = 0.028;
 
-        // Wall collision detection considering particle radius
-        if (particle.x + particle.radius > canvasWidth) {
-          particle.x = canvasWidth - particle.radius;
+      particles.forEach(particle => {
+        particle.dy = Math.random() * liquidMovementSpeed * 2 - liquidMovementSpeed;
+        particle.dx = Math.random() * liquidMovementSpeed * 2 - liquidMovementSpeed;
+    
+        // Apply gravitational pull towards the bottom
+        particle.dy += gravity;
+    
+        // Wall collision detection
+        if (particle.x + particle.radius > canvasWidth || particle.x - particle.radius < 0) {
           particle.dx = -particle.dx;
-        } else if (particle.x - particle.radius < 0) {
-          particle.x = particle.radius;
-          particle.dx = -particle.dx;
+          // Adjust particle position to prevent going beyond the walls
+          if (particle.x + particle.radius > canvasWidth) {
+            particle.x = canvasWidth - particle.radius;
+          } else if (particle.x - particle.radius < 0) {
+            particle.x = particle.radius;
+          }
         }
-        if (particle.y + particle.radius > canvasHeight) {
-          particle.y = canvasHeight - particle.radius;
+        if (particle.y + particle.radius > canvasHeight || particle.y - particle.radius < 0) {
           particle.dy = -particle.dy;
-        } else if (particle.y - particle.radius < 0) {
-          particle.y = particle.radius;
-          particle.dy = -particle.dy;
+          // Adjust particle position to prevent going beyond the walls
+          if (particle.y + particle.radius > canvasHeight) {
+            particle.y = canvasHeight - particle.radius;
+          } else if (particle.y - particle.radius < 0) {
+            particle.y = particle.radius;
+          }
         }
 
         // Particle collision detection
@@ -102,12 +112,11 @@ const LiquidParticles = () => {
       requestAnimationFrame(updateParticles);
     }
 
-    drawParticles();
     updateParticles();
   }, []);
 
   return (
-    <canvas ref={canvasRef} width={400} height={400} style={{ border: '1px solid #000' }}></canvas>
+    <canvas ref={canvasRef} width={400} height={400}></canvas>
   );
 };
 

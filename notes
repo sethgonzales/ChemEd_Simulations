@@ -49,3 +49,26 @@ CSS NOTES
 css route transitions  
 react slick for photos
 css selectors for hovering over a div to change an overlay on a photo or div
+
+
+
+
+App.js original routes
+<Route
+  path="/"
+  exact
+  element={<Home userAuth={isAuthenticated} />}
+/> 
+<Route path="/login" element={<LogIn handleAuthChange={handleAuthChange} />} /> 
+<Route path="/register" element={<Register />} /> 
+<Route
+  path="/account"
+  exact
+  element={<AccountDetails userAuth={isAuthenticated} handleAuthChange={handleAuthChange} />}
+/>
+<Route
+  path="/edit"
+  element={<Edit userAuth={isAuthenticated} />}
+/>
+<Route path="/simulations" element={<SimulationList />} />
+<Route path="/states-of-matter" element={<StatesOfMatter />} />
