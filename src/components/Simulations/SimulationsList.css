@@ -1,22 +1,77 @@
+
+.carousel {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 80%; /* Adjust width as needed */
+  height: 30em;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Carousel track to hold slides */
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease; /* Smooth sliding transition */
+  width: 100%; /* Ensure the track spans the entire carousel */
+}
+
+
+/* Individual slide within the carousel */
+.carousel-slide {
+  flex: 0 0 100%; /* Set slide width */
+  padding: 0 10px; /* Adjust slide padding */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+}
+.simulation-image {
+  max-width: 100%; /* Adjust the width as needed */
+  max-height: 300px; /* Adjust the maximum height as needed */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  box-shadow: 0 0 10px #00000033; /* Add a box shadow for visual effect */
+}
+
+/* Styles for the simulation name (optional) */
 .simulation-link {
   text-decoration: none;
-  color: white;
-  position: relative;
+  color: black;
 }
 
-/* Styles for the hover effect */
-.simulation-link::after {
-  content: '';
-  display: block;
+/* Optional hover effect on the images */
+.carousel-slide:hover .simulation-image {
+  transform: scale(1.05); /* Increase scale on hover (adjust as needed) */
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+
+
+/* Navigation buttons */
+.carousel-prev,
+.carousel-next {
   position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: white;
-  transition: width 0.3s ease; 
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  color: black;
+  font-size: larger;
+  font-weight: bolder;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
 }
 
-.simulation-link:hover::after {
-  width: 100%; 
+.carousel-prev {
+  left: 10px;
 }
+
+.carousel-next {
+  right: 10px;
+}
+
+
