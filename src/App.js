@@ -42,8 +42,12 @@ const App = () => {
               path="/edit"
               element={<Edit userAuth={isAuthenticated} />}
             />
-            <Route path="/simulations" element={<SimulationList />} />
-            <Route path="/states-of-matter" element={<StatesOfMatter />} />
+            <Route
+              path="/simulations"
+              element={<SimulationList userAuth={isAuthenticated} />} />
+            <Route
+              path="/states-of-matter"
+              element={<StatesOfMatter />} />
           </Routes>
         </div>
         <Footer />

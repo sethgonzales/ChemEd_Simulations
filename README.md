@@ -41,9 +41,10 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 
 ### Friday, 12/8
 * 8:00: Begin working
-* 10:30: OH NO I FORGOT TO START COMMITTING.. I have updated user logic for the log in and account detail pages and changes routing settings. I AM NOW STARTING MY COMMIT TIMER :(
+* 10:30: OH NO I FORGOT TO START COMMITTING.. I have updated user logic for the log in and account detail pages and changes routing settings. I AM NOW STARTING MY COMMIT TIMER :( s
 * 11:20: Fix auth issue and style simulation list page 
 * 12:05: Redo and finish styling on simulations page 
+* 1:25: Redo and finish styling on simulations page 
 
 
 # _ChemEd Simulations_
