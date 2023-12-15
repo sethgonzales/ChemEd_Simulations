@@ -3,9 +3,10 @@ import './StatesOfMatter.css';
 import SolidParticles from './SolidParticles';
 import LiquidParticles from './LiquidParticles';
 import GasParticles from './GasParticles';
+import withAuthorization from './../../Account/withAuthorization';
 
 const StatesOfMatter = () => {
-  const canvasRef = useRef(null);
+  // const canvasRef = useRef(null);
   const [currentState, setCurrentState] = useState('Solid'); // Initial state is 'solid'
 
   const toggleState = () => {
@@ -37,4 +38,5 @@ const StatesOfMatter = () => {
   );
 };
 
-export default StatesOfMatter;
+export default withAuthorization(StatesOfMatter); 
+

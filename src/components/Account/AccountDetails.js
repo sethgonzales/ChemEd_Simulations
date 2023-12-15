@@ -10,7 +10,7 @@ const AccountDetails = ({ userAuth, handleAuthChange }) => {
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  console.log('Is authenticated:', userAuth);
+  // console.log('Is authenticated:', userAuth);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -21,15 +21,15 @@ const AccountDetails = ({ userAuth, handleAuthChange }) => {
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
             const fetchedUserData = docSnap.data();
-            console.log("Fetched User Data:", fetchedUserData); // Log fetched user data
+            // console.log("Fetched User Data:", fetchedUserData); 
             setUserData(fetchedUserData);
           } else {
-            console.log("User data does not exist"); // Log if user data doesn't exist
+            // console.log("User data does not exist"); 
           }
         }
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching user data:", error); // Log any errors
+        // console.error("Error fetching user data:", error); 
         setLoading(false);
       }
     };
@@ -67,7 +67,8 @@ const AccountDetails = ({ userAuth, handleAuthChange }) => {
       {loading && <p>Loading...</p>}
       {!loading && !userAuth && (
         <React.Fragment>
-          <h1>Oops, looks like you are not signed in!</h1>
+          <h1>Oops, looks like you are not signed in...</h1>
+          <p>Please sign in to view your account!</p>
           <button className="user-btn btn-1" onClick={handleLogInClick}>Sign In</button>
           <button className="user-btn" onClick={handleRegisterClick}>Register</button>
         </React.Fragment>

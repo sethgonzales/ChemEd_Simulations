@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import './App.css';
 
 const App = () => {
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   console.log('Is authenticated:', isAuthenticated);
 

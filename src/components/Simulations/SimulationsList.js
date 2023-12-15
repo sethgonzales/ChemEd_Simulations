@@ -1,10 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { auth, db } from "./../../firebase.js";
+import { doc, getDoc } from "firebase/firestore";
 import { Link } from 'react-router-dom';
 import './SimulationsList.css';
 import statesimg from './../img/statesimg.png';
 import comingsoon from './../img/comingsoon.png';
+import withAuthorization from './../Account/withAuthorization';
 
-const SimulationList = () => {
+const SimulationList = ({ userAuth }) => {
   const simulations = [
     {
       name: 'States of Matter',
@@ -23,7 +27,7 @@ const SimulationList = () => {
       name: 'Titrations',
       path: 'titrations',
       image: comingsoon,
-      description: 'Learn how to use a buret and perform a colormetric titration'
+      description: 'Learn how to use a buret and perform a colorimetric titration'
     },
   ];
 
@@ -42,9 +46,8 @@ const SimulationList = () => {
         ))}
       </div>
     </div>
+
   );
 };
 
-
-
-export default SimulationList;
+export default withAuthorization(SimulationList); 
