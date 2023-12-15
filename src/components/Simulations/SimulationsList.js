@@ -9,57 +9,42 @@ const SimulationList = () => {
     {
       name: 'States of Matter',
       path: 'states-of-matter',
-      image: statesimg
+      image: statesimg,
+      description: 'Model differences between solids, liquids, and gases'
     },
     {
-      name: 'Chemical Reactions',
-      path: 'chemical-reactions',
-      image: comingsoon
+      name: 'Balancing Reactions',
+      path: 'balancing-reactions',
+      image: comingsoon,
+      description: 'Use a scale to balance chemical reactions and see the impact of changing coefficients'
+
     },
     {
-      name: 'Chemical Reactions',
-      path: 'chemical-reactions',
-      image: comingsoon
+      name: 'Titrations',
+      path: 'titrations',
+      image: comingsoon,
+      description: 'Learn how to use a buret and perform a colormetric titration'
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef(null);
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-    carouselRef.current.style.transform = `translateX(-${index * 100}%)`;
-  };
-
   return (
     <div className="simulation-list">
-      <div>
-        <h1>Chemistry Simulations</h1>
-      </div>
-      <div className="carousel">
-        <div className="carousel-track" ref={carouselRef}>
-          {simulations.map((simulation, index) => (
-            <div key={index} className="carousel-slide">
-              <Link to={`/${simulation.path}`} className="simulation-link">
-                <img
-                  src={simulation.image}
-                  alt={simulation.name}
-                  className="simulation-image"
-                />
-              </Link>
+      <h1>Chemistry Simulations</h1>
+      <div className="projects-container">
+        {simulations.map((simulation, index) => (
+          <Link to={`/${simulation.path}`} key={index} className="project-container">
+            <div className="simulation-link">
+              <h2>{simulation.name}</h2>
+              <img src={simulation.image} alt={simulation.name} />
+              <p>{simulation.description}</p>
             </div>
-          ))}
-        </div>
-        <button className="carousel-prev" onClick={() => goToSlide((currentSlide - 1 + simulations.length) % simulations.length)}>
-          &lt;
-        </button>
-        <button className="carousel-next" onClick={() => goToSlide((currentSlide + 1) % simulations.length)}>
-          &gt;
-        </button>
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
+
 
 
 export default SimulationList;

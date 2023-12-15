@@ -1,77 +1,43 @@
-
-.carousel {
+.projects-container {
   display: flex;
-  position: relative;
-  overflow: hidden;
-  width: 80%; /* Adjust width as needed */
-  height: 30em;
-  margin: 0 auto;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 3em;
+  margin: 2em;
 }
 
-
-/* Carousel track to hold slides */
-.carousel-track {
-  display: flex;
-  transition: transform 0.3s ease; /* Smooth sliding transition */
-  width: 100%; /* Ensure the track spans the entire carousel */
-}
-
-
-/* Individual slide within the carousel */
-.carousel-slide {
-  flex: 0 0 100%; /* Set slide width */
-  padding: 0 10px; /* Adjust slide padding */
-  display: flex;
-  justify-content: center; /* Center content horizontally */
-}
-.simulation-image {
-  max-width: 100%; /* Adjust the width as needed */
-  max-height: 300px; /* Adjust the maximum height as needed */
-  object-fit: cover; /* Maintain aspect ratio and cover the container */
-  border-radius: 8px; /* Add border-radius for rounded corners */
-  box-shadow: 0 0 10px #00000033; /* Add a box shadow for visual effect */
-}
-
-/* Styles for the simulation name (optional) */
-.simulation-link {
+.project-container {
+  background-color: #8186e4;
+  border: 2px solid #3e43a7;
+  box-shadow: -10px 10px 0px #3e43a7;
+  color: #ececec;
+  border-radius: 15px;
+  padding: 20px;
+  width: 15em;
   text-decoration: none;
-  color: black;
 }
 
-/* Optional hover effect on the images */
-.carousel-slide:hover .simulation-image {
-  transform: scale(1.05); /* Increase scale on hover (adjust as needed) */
-  transition: transform 0.3s ease; /* Add a smooth transition effect */
+.project-container h2 {
+  text-align: center;
+  margin-bottom: 1em;
 }
 
+.project-container img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5em;
+}
 
-/* Navigation buttons */
-.carousel-prev,
-.carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #ffffff;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  color: black;
-  font-size: larger;
-  font-weight: bolder;
-  border: none;
-  padding: 10px;
+.project-container .simulation-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-container:hover {
+  background-color: #8a8ee5;
+  border: 2px solid #404496;
+  box-shadow: -10px 10px 0px #404496;
+  color: #ececec;
+  transform: scale(1.05);
   cursor: pointer;
-  z-index: 1;
 }
-
-.carousel-prev {
-  left: 10px;
-}
-
-.carousel-next {
-  right: 10px;
-}
-
-
