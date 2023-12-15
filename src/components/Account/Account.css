@@ -1,0 +1,42 @@
+.user-acc-container {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-acc-info {
+  width: 20em;
+  margin: 3em;
+  padding: 1em 2em 2em 2em;
+  background-color: #fab87e;
+  box-shadow: -10px 10px 0px #ec7d1c;
+  border: solid 3px #ec7d1c;
+  color: #3e3e3e;
+  border-radius: 20px;
+}
+
+.user-acc-info input {
+  width: 100%;
+  height: 2em;
+  margin-bottom: 1em;
+}
+
+.user-acc-info p {
+  text-align: center;
+}
+
+.acc-details {
+  margin: 2em 1em;
+}
+
+.acc-details p{
+  text-align: left;
+}
+
+.btn-container {
+  margin: 15px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

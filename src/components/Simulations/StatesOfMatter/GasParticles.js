@@ -107,7 +107,11 @@ const GasParticles = () => {
   }, []);
 
   return (
-    <canvas ref={canvasRef} width={400} height={400}></canvas>
+    <canvas
+      ref={canvasRef}
+      width={400} height={400}
+      style={{ borderRadius: '20px' }}
+    ></canvas>
   );
 };
 

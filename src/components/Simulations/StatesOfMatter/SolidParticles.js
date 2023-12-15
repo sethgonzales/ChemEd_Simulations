@@ -75,6 +75,7 @@ const SolidParticles = () => {
         ref={canvasRef}
         width={200}
         height={200}
+        style={{ borderRadius: '20px' }}
       ></canvas>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Header from './components/Header';
 import Home from './components/Home';
 import LogIn from './components/Account/LogIn';
@@ -25,112 +24,31 @@ const App = () => {
     <Router>
       <React.Fragment>
         <Header userAuth={isAuthenticated} />
-        <div className="app-main">
+        <div className="app-main ">
           <Routes>
-
             <Route
-              path='/'
-              element={
-                <TransitionGroup>
-                  <CSSTransition
-                    key='home'
-                    timeout={500}
-                    classNames='route'
-                  >
-                    <Home userAuth={isAuthenticated} />
-                  </CSSTransition>
-                </TransitionGroup>
-              }
+              path="/"
+              exact
+              element={<Home userAuth={isAuthenticated} />}
+            />
+            <Route path="/login" element={<LogIn handleAuthChange={handleAuthChange} />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/account"
+              exact
+              element={<AccountDetails userAuth={isAuthenticated} handleAuthChange={handleAuthChange} />}
             />
             <Route
-              path='/login'
-              element={
-                <TransitionGroup>
-                  <CSSTransition
-                    key='login'
-                    timeout={500}
-                    classNames='route'
-                  >
-                    <LogIn handleAuthChange={handleAuthChange} />
-                  </CSSTransition>
-                </TransitionGroup>
-              }
+              path="/edit"
+              element={<Edit userAuth={isAuthenticated} />}
             />
-            <Route
-              path='/register'
-              element={
-                <TransitionGroup>
-                  <CSSTransition
-                    key='register'
-                    timeout={500}
-                    classNames='route'
-                  >
-                    <Register />
-                  </CSSTransition>
-                </TransitionGroup>
-              }
-            />
-            <Route
-              path='/account'
-              element={
-                <TransitionGroup>
-                  <CSSTransition
-                    key='account'
-                    timeout={500}
-                    classNames='route'
-                  >
-                    <AccountDetails userAuth={isAuthenticated} handleAuthChange={handleAuthChange} />
-                  </CSSTransition>
-                </TransitionGroup>
-              }
-            />
-            <Route
-              path='/edit'
-              element={
-                <TransitionGroup>
-                  <CSSTransition
-                    key='edit'
-                    timeout={500}
-                    classNames='route'
-                  >
-                    <Edit userAuth={isAuthenticated} />
-                  </CSSTransition>
-                </TransitionGroup>
-              }
-            />
-            <Route
-              path='/simulations'
-              element={
-                <TransitionGroup>
-                  <CSSTransition
-                    key='simulations'
-                    timeout={500}
-                    classNames='route'
-                  >
-                    <SimulationList />
-                  </CSSTransition>
-                </TransitionGroup>
-              }
-            />
-            <Route
-              path='/states-of-matter'
-              element={
-                <TransitionGroup>
-                  <CSSTransition
-                    key='states-of-matter'
-                    timeout={500}
-                    classNames='route'
-                  >
-                    <StatesOfMatter />
-                  </CSSTransition>
-                </TransitionGroup>
-              }
-            />
+            <Route path="/simulations" element={<SimulationList />} />
+            <Route path="/states-of-matter" element={<StatesOfMatter />} />
           </Routes>
         </div>
         <Footer />
       </React.Fragment>
-    </Router>
+    </Router >
   );
 };
 

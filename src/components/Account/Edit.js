@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth, db } from "./../../firebase.js";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
+import './Account.css'
 
 const Edit = ({ userAuth }) => {
   const [userData, setUserData] = useState(null);
@@ -57,38 +58,29 @@ const Edit = ({ userAuth }) => {
   };
 
   return (
-    <div>
-      {userAuth && userData ? (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Username:
+    <div className='user-acc-container'>
+      <div className='user-acc-info'>
+        {userAuth && userData ? (
+          <form onSubmit={handleSubmit}>
+            <h1>Edits Account</h1>
             <input
               type="text"
               name="userName"
               value={newUserData.userName}
               onChange={handleInputChange}
             />
-          </label>
-          <label>
-            Email:
             <input
               type="email"
               name="email"
               value={newUserData.email}
               onChange={handleInputChange}
             />
-          </label>
-          <label>
-            School:
             <input
               type="text"
               name="school"
               value={newUserData.school}
               onChange={handleInputChange}
             />
-          </label>
-          <label>
-            Grade Level:
             <input
               type="number"
               name="gradeLevel"
@@ -97,12 +89,14 @@ const Edit = ({ userAuth }) => {
               value={newUserData.gradeLevel}
               onChange={handleInputChange}
             />
-          </label>
-          <button type="submit">Update Profile</button>
-        </form>
-      ) : (
-        <p>Please sign in to edit your profile.</p>
-      )}
+            <div className='btn-container'>
+              <button type='submit' className='user-btn'>Update Profile</button>
+            </div>
+          </form>
+        ) : (
+          <h2>Please sign in to edit your profile.</h2>
+        )}
+      </div>
     </div>
   );
 };

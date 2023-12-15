@@ -17,3 +17,22 @@ code {
   padding: 2%;
 }
 
+.user-btn {
+  padding: 8px 12px;
+  font-size: 15px;
+  color: white;
+  background-color: #1ab11f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-1 {
+  margin-right: 30px;
+}
+
+.user-btn:hover {
+  color: white;
+  background-color: #1a9c1e;
+  transform: scale(1.05);
+}

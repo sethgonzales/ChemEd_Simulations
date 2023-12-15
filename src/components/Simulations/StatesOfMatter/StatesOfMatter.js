@@ -30,7 +30,7 @@ const StatesOfMatter = () => {
         </div>
         <div className='SOM-control'>
           <h1>{currentState}</h1>
-          <button onClick={toggleState}>Change State</button>
+          <button onClick={toggleState} className='user-btn'>Change State</button>
         </div>
       </div>
     </div>

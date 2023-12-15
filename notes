@@ -46,11 +46,6 @@ capstone
 
 
 CSS NOTES
-css route transitions  
-react slick for photos
-css selectors for hovering over a div to change an overlay on a photo or div
-
-
 
 
 App.js original routes
@@ -72,3 +67,34 @@ App.js original routes
 />
 <Route path="/simulations" element={<SimulationList />} />
 <Route path="/states-of-matter" element={<StatesOfMatter />} />
+
+<!-- Route transitions -->
+<Routes>
+            <Route
+              path='/'
+              element={
+                <TransitionGroup>
+                  <CSSTransition
+                    key='home'
+                    timeout={500}
+                    classNames='route'
+                  >
+                    <Home userAuth={isAuthenticated} />
+                  </CSSTransition>
+                </TransitionGroup>
+              }
+            />
+            <Route
+              path='/login'
+              element={
+                <TransitionGroup>
+                  <CSSTransition
+                    key='login'
+                    timeout={500}
+                    classNames='route'
+                  >
+                    <LogIn handleAuthChange={handleAuthChange} />
+                  </CSSTransition>
+                </TransitionGroup>
+              }
+            />

@@ -114,11 +114,11 @@ const Header = ({ userAuth }) => {
         </Link>
       </div>
       <div className="right">
-        <button className="user-btn" onClick={handleSimulationClick}>Simulations</button>
+        <button className="user-btn btn-1" onClick={handleSimulationClick}>Simulations</button>
         {!userAuth ? (
-          <button className="user-btn" onClick={handleLoginClick}>Log In</button>
+          <button className="user-btn btn-1" onClick={handleLoginClick}>Log In</button>
         ) : (
-          <button className="user-btn" onClick={handleAccountClick}>Account</button>
+          <button className="user-btn btn-1" onClick={handleAccountClick}>Account</button>
         )}
       </div>
 

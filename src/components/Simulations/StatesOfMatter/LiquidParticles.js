@@ -54,10 +54,10 @@ const LiquidParticles = () => {
       particles.forEach(particle => {
         particle.dy = Math.random() * liquidMovementSpeed * 2 - liquidMovementSpeed;
         particle.dx = Math.random() * liquidMovementSpeed * 2 - liquidMovementSpeed;
-    
+
         // Apply gravitational pull towards the bottom
         particle.dy += gravity;
-    
+
         // Wall collision detection
         if (particle.x + particle.radius > canvasWidth || particle.x - particle.radius < 0) {
           particle.dx = -particle.dx;
@@ -116,7 +116,12 @@ const LiquidParticles = () => {
   }, []);
 
   return (
-    <canvas ref={canvasRef} width={400} height={400}></canvas>
+    <canvas
+      ref={canvasRef}
+      width={400}
+      height={400}
+      style={{ borderRadius: '20px' }}
+    ></canvas>
   );
 };
 
