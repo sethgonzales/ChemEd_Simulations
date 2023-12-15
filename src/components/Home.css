@@ -1,51 +1,58 @@
 .home {
-  position: flex;
-  align-items: center;
-  justify-content: center;
   margin: 3em;
-  padding: 20px;
   letter-spacing: 2px;
   text-align: left;
 }
 
-.home-title {
+.home-info {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  max-width: 80%;
-  text-align: left;
-  z-index: 1;
+  max-width: 50em;
+  margin: 0 auto;
 }
 
-
-.home-title-blurb {
-  margin-left: 15em;
+.home-blurb {
+  width: 100%;
 }
 
-.home-title-blurb h1 {
+.home-blurb h1 {
   font-size: 40px;
 }
 
-.home-title-blurb p {
+.home-blurb p {
   font-size: 20px;
 }
 
-.home li {
-  padding: 10px 0px;
-  font-size: 20px;
+.home-mission {
+  text-align: center;
+  margin-top: 4em;
 }
 
-.home-btm-img {
-  position: absolute ;
-  bottom: 20px;
-  right: 20px;
-  max-width: 300px; /* Adjust as needed */
-  z-index: -1;
+.home-mission h1 {
+  font-size: 40px;
+  text-align: left
+}
+
+.home-mission li {
+  padding: 0.5em 0em;
+  font-size: 20px;
+  margin-left: -1em;
+  text-align: left;
 }
 
 
 .home-top-img {
-  max-width: 200px;
-  margin-right: 20px;
-  position: fixed ;
+  max-width: 15em;
+  position: fixed;
+  top: 15em;
+  left: 0em;
   z-index: -1;
+}
+
+.home-btm-img {
+  /* position: fixed; */
+  width: 15em;
+  margin: 1em;
+  /* z-index: -1; */
 }
