@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import './SimulationsList.css';
-import statesimg from './../img/statesimg.png';
-import comingsoon from './../img/comingsoon.png';
+import statesimg from './../../img/statesimg.png';
+import comingsoon from './../../img/comingsoon.png';
 import withAuthorization from './../Account/withAuthorization';
 
 const SimulationList = () => {

@@ -21,8 +21,9 @@ const App = () => {
     setIsAuthenticated(value);
   };
 
-  const ProtectedSimulationList = withAuthorization(SimulationList); // Apply withAuthorization to SimulationList
-  const ProtectedAccountDetails = withAuthorization(AccountDetails); // Apply withAuthorization to AccountDetails
+  const ProtectedAccountDetails = withAuthorization(AccountDetails);
+  const ProtectedSimulationList = withAuthorization(SimulationList);
+  const ProtectedStatesOfMatter = withAuthorization(StatesOfMatter);
 
   return (
     <Router>
@@ -44,10 +45,7 @@ const App = () => {
               element={<Edit userAuth={isAuthenticated} />}
             />
             <Route path="/simulations" element={<ProtectedSimulationList />} />
-
-            <Route
-              path="/states-of-matter"
-              element={<StatesOfMatter />} />
+            <Route path="/states-of-matter" element={<ProtectedStatesOfMatter />} />
           </Routes>
         </div>
         <Footer />

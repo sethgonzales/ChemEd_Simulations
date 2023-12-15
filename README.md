@@ -46,6 +46,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 12:05: Redo and finish styling on simulations page 
 * 1:20: begin adding user Auth to simulations 
 * 1:50: reconfig auth across app 
+* 2:30: continue reconfig auth across app 
 
 
 # _ChemEd Simulations_

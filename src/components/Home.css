@@ -1,17 +1,51 @@
 .home {
-  letter-spacing: 2px;
+  position: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3em;
   padding: 20px;
+  letter-spacing: 2px;
   text-align: left;
 }
 
 .home-title {
-  font-size: 30px;
-  max-width: 100%;
-  margin: 60px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  max-width: 80%;
+  text-align: left;
+  z-index: 1;
+}
+
+
+.home-title-blurb {
+  margin-left: 15em;
+}
+
+.home-title-blurb h1 {
+  font-size: 40px;
+}
+
+.home-title-blurb p {
+  font-size: 20px;
 }
 
 .home li {
   padding: 10px 0px;
   font-size: 20px;
+}
+
+.home-btm-img {
+  position: absolute ;
+  bottom: 20px;
+  right: 20px;
+  max-width: 300px; /* Adjust as needed */
+  z-index: -1;
+}
+
+
+.home-top-img {
+  max-width: 200px;
+  margin-right: 20px;
+  position: fixed ;
+  z-index: -1;
 }
