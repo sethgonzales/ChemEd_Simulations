@@ -60,11 +60,12 @@ const Edit = ({ userAuth }) => {
   return (
     <div className='user-acc-container'>
       <div className='user-acc-info'>
+
         {userAuth && userData ? (
           <form onSubmit={handleSubmit}>
             <h1>Edits Account</h1>
             <label>
-              Username:
+              Grade:
               <input
                 type="text"
                 name="userName"

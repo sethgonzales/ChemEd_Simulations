@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './StatesOfMatter.css';
 import SolidParticles from './SolidParticles';
 import LiquidParticles from './LiquidParticles';
@@ -6,7 +6,6 @@ import GasParticles from './GasParticles';
 import withAuthorization from './../../Account/withAuthorization';
 
 const StatesOfMatter = () => {
-  // const canvasRef = useRef(null);
   const [currentState, setCurrentState] = useState('Solid'); // Initial state is 'solid'
 
   const toggleState = () => {

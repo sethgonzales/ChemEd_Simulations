@@ -9,6 +9,7 @@ import Edit from './components/Account/Edit';
 import StatesOfMatter from './components/Simulations/StatesOfMatter/StatesOfMatter';
 import SimulationList from './components/Simulations/SimulationsList';
 import Footer from './components/Footer';
+import withAuthorization from './components/Account/withAuthorization'; // Import the withAuthorization HOC
 import './App.css';
 
 const App = () => {
@@ -20,6 +21,8 @@ const App = () => {
     setIsAuthenticated(value);
   };
 
+  const ProtectedSimulationList = withAuthorization(SimulationList); // Apply withAuthorization to SimulationList
+  const ProtectedAccountDetails = withAuthorization(AccountDetails); // Apply withAuthorization to AccountDetails
 
   return (
     <Router>
@@ -34,18 +37,14 @@ const App = () => {
             />
             <Route path="/login" element={<LogIn handleAuthChange={handleAuthChange} />} />
             <Route path="/register" element={<Register />} />
-            <Route
-              path="/account"
-              exact
-              element={<AccountDetails userAuth={isAuthenticated} handleAuthChange={handleAuthChange} />}
-            />
+            <Route path="/account" exact element={<ProtectedAccountDetails handleAuthChange={handleAuthChange} />} />
+
             <Route
               path="/edit"
               element={<Edit userAuth={isAuthenticated} />}
             />
-            <Route
-              path="/simulations"
-              element={<SimulationList userAuth={isAuthenticated} />} />
+            <Route path="/simulations" element={<ProtectedSimulationList />} />
+
             <Route
               path="/states-of-matter"
               element={<StatesOfMatter />} />
