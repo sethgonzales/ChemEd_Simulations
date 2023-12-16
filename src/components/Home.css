@@ -42,17 +42,89 @@
 }
 
 
-.home-top-img {
+.home-top-left {
   max-width: 15em;
-  position: fixed;
-  top: 15em;
+  position: absolute;
+  top: 13em;
   left: 0em;
   z-index: -1;
 }
 
+.home-top-right {
+  max-width: 10em;
+  position: absolute;
+  top: 15em;
+  right: 4em;
+  z-index: -1;
+}
+
 .home-btm-img {
-  /* position: fixed; */
   width: 15em;
   margin: 1em;
-  /* z-index: -1; */
 }
+
+
+/* Media query for medium devices (e.g., tablets) */
+@media screen and (min-width: 1070px) and (max-width: 1250px) {
+  .home-top-left {
+    max-width: 11em;
+    top: 13em;
+    left: 2em;
+  }
+
+  .home-top-right {
+    max-width: 9em;
+    top: 15em;
+    right: 4em;
+  }
+
+  .home-info {
+    max-width: 45em;
+  }
+
+  .home-blurb h1,
+  .home-mission h1
+   {
+    font-size: 35px;
+  }
+
+  .home-blurb p,
+  .home-mission li {
+    font-size: 18px;
+  }
+  
+}
+
+/* Media query for small devices (e.g., phones) */
+@media screen and (max-width: 1070px) {
+  .home-blurb h1,
+  .home-mission h1 {
+    font-size: 35px;
+  }
+
+  .home-blurb p,
+  .home-mission li {
+    font-size: 18px;
+  }
+
+  /* New rules to display images side by side */
+  .home-info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: flex-start;
+  }
+
+  .home-top-left,
+  .home-top-right {
+    position: relative;
+    width: calc(50% - 20px); /* Adjust the width and subtract smaller margins */
+    margin: 10px; /* Adjust margins between images */
+    z-index: -1;
+    top: 0;
+
+  }
+}
+
+
+@media screen and (max-width: 576px) {}
