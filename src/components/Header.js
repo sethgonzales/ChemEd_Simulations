@@ -75,8 +75,14 @@ const Header = ({ userAuth }) => {
 
   return (
     <header className="header">
+
       <div className="left">
-      <Link to="/" className="header-link">
+        <div className="mobile-header">
+          <Link to="/" className="header-link">
+            <h1 className="header-title">ChemEd</h1>
+          </Link>
+        </div>
+        <Link to="/" className="header-link">
           {chemElements.map((element, index) => (
             <div
               key={index}
@@ -121,7 +127,19 @@ const Header = ({ userAuth }) => {
           <button className="user-btn btn-1" onClick={handleAccountClick}>Account</button>
         )}
       </div>
-
+      
+      <div className="header-dropdown">
+        <button className="dropbtn">Menu</button>
+        <div className="dropdown-content">
+          <button className="user-btn btn-1" onClick={handleSimulationClick}>Simulations</button>
+          {!userAuth ? (
+            <button className="user-btn btn-1" onClick={handleLoginClick}>Log In</button>
+          ) : (
+            <button className="user-btn btn-1" onClick={handleAccountClick}>Account</button>
+          )}
+        </div>
+      </div>
+      
     </header>
   );
 };

@@ -57,10 +57,50 @@
 
 .solid-canvas-container {
   position: absolute;
-  /* Position the solid canvas absolutely within its container */
   top: 300px;
   left: 50%;
-  /* Position at horizontal center */
   transform: translate(-50%, -50%);
-  /* Center alignment using transform */
 }
+
+@media screen and (max-width: 740px) {
+  .simulation-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .simulation-page h1 {
+    width: 100%;
+    margin: 20px;
+    text-align: left;
+    font-size: 40px;
+  }
+
+  .simulation-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .SOM-control {
+    width: 200px; 
+    height: auto; 
+    margin: 4em 0; 
+  }
+
+  .SOM-control h1 {
+    text-align: center;
+    font-size: larger;
+  }
+
+  .SOM-control button {
+    margin: 1em; 
+    padding: 1em; 
+    font-size: 12px; 
+    width: 10em; 
+  }
+}
+

@@ -65,7 +65,7 @@
 
 
 /* Media query for medium devices (e.g., tablets) */
-@media screen and (min-width: 1070px) and (max-width: 1250px) {
+@media screen and (min-width: 1090px) and (max-width: 1250px) {
   .home-top-left {
     max-width: 11em;
     top: 13em;
@@ -96,7 +96,7 @@
 }
 
 /* Media query for small devices (e.g., phones) */
-@media screen and (max-width: 1070px) {
+@media screen and (max-width: 1090px) {
   .home-blurb h1,
   .home-mission h1 {
     font-size: 35px;
@@ -118,8 +118,9 @@
   .home-top-left,
   .home-top-right {
     position: relative;
-    width: calc(50% - 20px); /* Adjust the width and subtract smaller margins */
-    margin: 10px; /* Adjust margins between images */
+    width: calc(50% - 30px); /* Adjust the width and subtract smaller margins */
+    margin: 30px; /* Adjust margins between images */
+    max-width: 8em;
     z-index: -1;
     top: 0;
 
@@ -127,4 +128,41 @@
 }
 
 
-@media screen and (max-width: 576px) {}
+@media screen and (max-width: 576px) {
+  .home-top-left,
+  .home-top-right {
+    margin: 30px; /* Adjust margins between images */
+    max-width: 6em;
+  }
+
+  .home-blurb p,
+  .home-mission li {
+    font-size: 14px;
+  }
+
+  .home-blurb h1,
+  .home-mission h1 {
+    font-size: 25px;
+  }
+  
+}
+
+@media screen and (max-width: 425px) {
+  .home-top-left {
+    display: none;
+  }
+  .home-top-right {
+    margin-left: 10em;
+    max-width: 6em;
+  }
+
+  .home-blurb p,
+  .home-mission li {
+    font-size: 12px;
+  }
+
+  .home-blurb h1,
+  .home-mission h1 {
+    font-size: 20px;
+  }
+}

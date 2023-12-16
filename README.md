@@ -49,6 +49,10 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 2:30: continue reconfig auth across app 
 * 3:10: begin restructure home page
 * 3:50: continue restructure home page
+* 4:30: start responsive design complete home styles
+* 5:00: finish responsive design
+* 5:20: add in atom to sim page
+
 
 
 # _ChemEd Simulations_
