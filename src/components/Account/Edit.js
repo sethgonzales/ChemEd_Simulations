@@ -65,7 +65,7 @@ const Edit = ({ userAuth }) => {
           <form onSubmit={handleSubmit}>
             <h1>Edits Account</h1>
             <label>
-              Grade:
+              User Name:
               <input
                 type="text"
                 name="userName"
