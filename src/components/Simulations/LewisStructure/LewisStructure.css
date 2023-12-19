@@ -21,7 +21,15 @@
 }
 
 .LS-element {
+  margin: 1em;
+  cursor: pointer;
+}
+
+.LS-element p{
+  width: 2em;
+  height: 2em;
   text-align: center;
   background-color: white;
+  font-size: large;
   color: rgb(36, 36, 36);
 }
