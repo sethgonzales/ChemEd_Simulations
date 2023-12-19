@@ -1,7 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react'; // Import useCallback from React
 import './LewisStructure.css';
 import withAuthorization from './../../Account/withAuthorization';
-import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
+import {
+  useDraggable,
+  useDroppable,
+  DndContext,
+  useSensors,
+  useSensor,
+  MouseSensor,
+  TouchSensor,
+} from '@dnd-kit/core';
+
+const DraggableElement = ({ id, symbol }) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: id.toString(),
+  });
+  const style = {
+    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+  };
+  console.log(`Element ${symbol} is being dragged. Transform:`, transform);
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className='LS-element'
+    >
+      <p>{symbol}</p>
+    </div>
+
+  );
+};
+
+const DroppableContainer = ({ id, children }) => {
+  const { isOver, setNodeRef } = useDroppable({
+    id: id.toString(),
+  });
+  const style = {
+    backgroundColor: isOver ? 'lightblue' : 'transparent',
+  };
+
+  return (
+    <div ref={setNodeRef} className={id === 'LS-container' ? 'LS-element-container' : 'LS-container'} style={style}>
+      {children} {/* Render the draggable elements here */}
+    </div>
+  );
+};
+
+
+
 
 const LewisStructure = () => {
   const [elements, setElements] = useState([
@@ -10,124 +59,99 @@ const LewisStructure = () => {
       symbol: 'H',
       valenceElectrons: 1,
       octet: 2,
-      droppableId: 'LS-element-container'
+      droppableId: 'LS-container'
+    },
+    {
+      id: 2,
+      symbol: 'B',
+      valenceElectrons: 3,
+      octet: 8,
+      droppableId: 'LS-container'
+    },
+    {
+      id: 3,
+      symbol: 'C',
+      valenceElectrons: 4,
+      octet: 8,
+      droppableId: 'LS-container'
+
+    },
+    {
+      id: 4,
+      symbol: 'N',
+      valenceElectrons: 5,
+      octet: 8,
+      droppableId: 'LS-container'
 
     },
     {
       id: 5,
-      symbol: 'B',
-      valenceElectrons: 3,
+      symbol: 'O',
+      valenceElectrons: 6,
       octet: 8,
-      droppableId: 'LS-element-container'
+      droppableId: 'LS-container'
+
     },
     {
       id: 6,
-      symbol: 'C',
-      valenceElectrons: 4,
+      symbol: 'F',
+      valenceElectrons: 7,
       octet: 8,
-      droppableId: 'LS-element-container'
+      droppableId: 'LS-container'
 
     },
     {
       id: 7,
-      symbol: 'N',
-      valenceElectrons: 5,
-      octet: 8,
-      droppableId: 'LS-element-container'
-
-    },
-    {
-      id: 8,
-      symbol: 'O',
-      valenceElectrons: 6,
-      octet: 8,
-      droppableId: 'LS-element-container'
-
-    },
-    {
-      id: 9,
-      symbol: 'F',
-      valenceElectrons: 7,
-      octet: 8,
-      droppableId: 'LS-element-container'
-
-    },
-    {
-      id: 17,
       symbol: 'Cl',
       valenceElectrons: 7,
       octet: 8,
-      droppableId: 'LS-element-container'
+      droppableId: 'LS-container'
 
     },
   ]);
-  const handleDragEnd = (result) => {
-    const { source, destination } = result;
 
-    // Check if the drag has a valid destination
-    if (!destination) {
-      return;
+  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+
+  const handleDragEnd = useCallback((event) => {
+    const { over } = event;
+  
+    if (over) {
+      const draggedElement = elements.find((el) => el.id.toString() === event.active.id);
+      console.log('Dragged element:', draggedElement);
+      console.log('Dropped into:', over.id);
+      
+      if (draggedElement && over.id === 'droppable') {
+        const updatedElements = elements.filter((el) => el.id !== draggedElement.id);
+        setElements(updatedElements);
+      }
     }
+  }, [elements]);
 
-    // Retrieve the dragged element
-    const draggedElement = elements.find((el) => el.id === result.draggableId);
-
-    // Perform actions based on the drag result
-    if (source.droppableId === 'LS-element-container' && destination.droppableId === 'droppable') {
-      // Logic to handle the drag from LS-element-container to droppable
-      const updatedElements = elements.filter((el) => el.id !== draggedElement.id);
-      setElements(updatedElements);
-    }
-  };
-
-
+  
   return (
-    <DragDropContext onDragEnd={handleDragEnd}>
+    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <div className='simulation-page'>
         <h1>Lewis Structures</h1>
         <div className='simulation-container'>
-          <Droppable droppableId="LS-element-container">
-            {(provided) => (
-              <div
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                className='LS-element-container'
-              >
-                {elements.map((element, index) => (
-                  <Draggable key={element.id} draggableId={element.id} index={index}>
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className='LS-element'
-                      >
-                        <p>{element.symbol}</p>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
+          <DroppableContainer id='LS-container'>
+            {elements
+              .filter((element) => element.droppableId === 'LS-container')
+              .map((element) => (
+                <DraggableElement key={element.id} id={element.id} symbol={element.symbol} />
+              ))}
+          </DroppableContainer>
+          <DroppableContainer id='droppable'>
+            {/* Droppable container content */}
+          </DroppableContainer>
 
-          <Droppable droppableId="droppable">
-            {(provided) => (
-              <div
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                className='LS-container'
-              >
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
         </div>
       </div>
-    </DragDropContext>
+    </DndContext>
+
   );
 };
+
+
 
 
 export default withAuthorization(LewisStructure);

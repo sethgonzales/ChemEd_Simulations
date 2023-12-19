@@ -6,14 +6,18 @@
   border: solid 3px #3e43a7;
   box-shadow: 5px -5px 0px #3e43a7;
   border-radius: 20px;
+  color: black;
 }
 
+.LS-container p{
+  color: black;
+}
 
 .LS-element-container {
   position: relative;
   width: 4em;
   height: 25em;
-  margin: 2em;
+  /* margin: 2em; */
   background-color: #fab87e;
   box-shadow: -5px 5px 0px #ec7d1c;
   border: solid 3px #ec7d1c;
@@ -23,9 +27,26 @@
 .LS-element {
   margin: 1em;
   cursor: pointer;
+  z-index: 999; 
 }
 
 .LS-element p{
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  background-color: white;
+  font-size: large;
+  color: rgb(36, 36, 36);
+}
+
+.LS-element-container .LS-element {
+  position: relative;
+  margin: 1em;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.LS-element-container .LS-element p {
   width: 2em;
   height: 2em;
   text-align: center;
