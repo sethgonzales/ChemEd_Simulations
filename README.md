@@ -65,7 +65,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 8:30: Begin working, continue research
 * 9:00: Bug fixin
 * 9:40: Begin refactor with new dnd library
-* 9:40: complete basic dnd feature
+* 10:20: complete basic dnd feature
 
 
 # _ChemEd Simulations_

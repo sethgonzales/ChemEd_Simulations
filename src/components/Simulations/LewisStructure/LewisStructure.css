@@ -9,12 +9,12 @@
   color: white;
 }
 
-.LS-container p{
+/* .LS-container p{
   background-color: #fab87e;
-  color: black;
-}
+  color: white;
+} */
 
-.LS-element-container {
+/* .LS-element-container {
   position: relative;
   width: 4em;
   height: 25em;
@@ -23,7 +23,7 @@
   box-shadow: -5px 5px 0px #ec7d1c;
   border: solid 3px #ec7d1c;
   border-radius: 20px;
-}
+} */
 
 .LS-element {
   margin: 1em;

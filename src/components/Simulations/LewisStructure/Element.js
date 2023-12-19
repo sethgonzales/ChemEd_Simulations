@@ -1,21 +1,36 @@
-import React from "react";
-import { useDrag } from 'react-dnd';
+// Element.js
+import React from 'react';
+import { Text } from 'react-konva';
+import { v4 as uuidv4 } from 'uuid';
 
 
-function Element({ id, symbol }) {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: "element-div", //id the type of object you are moving.. Made up the name
-    // collect: (monitor) => ({ //def prop that is accessible, pass isDragging if we want to monitor if we are dragging an element. This is good for conditional styling... Dont need yet
-    //   isDragging: !!monitor.isDragging(),
-    // }),
-    item: {id: id}
-  }));
+const Element = ({ x, y, text, onClone }) => {
+  const handleClone = (e) => {
+    if (onClone) {
+      const newX = e.target.x(); // Get the current X coordinate of the element
+      const newY = e.target.y(); // Get the current Y coordinate of the element
+      const newId = uuidv4(); // Generate a new unique ID
+      onClone({ id: newId, x: newX, y: newY, text }); // Pass the current coordinates and text for cloning
+    }
+  };
+
 
   return (
-    <div className="LS-element" ref={drag}>
-      <p>{symbol}</p>
-    </div>
-  )
-}
+    <Text
+      x={x}
+      y={y}
+      text={text}
+      fontSize={20}
+      fill="white"
+      draggable
+      onMouseDown={(e) => {
+        if (e.evt.metaKey || e.evt.ctrlKey) {
+          handleClone(e); // Pass the event to get the current coordinates during click
+        }
+      }}
+    />
+  );
+};
 
-export default Element
+
+export default Element;

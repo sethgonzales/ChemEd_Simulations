@@ -1,7 +1,36 @@
+REACT DND NOTES
+import react dnd and react dnd backend html!!!!!
+
+
+LewisStructure.js
+import React from 'react';
+import './LewisStructure.css';
+import withAuthorization from './../../Account/withAuthorization';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import DragDrop from './DragDrop';
+
+const LewisStructure = () => {
+
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <div>
+        <DragDrop />
+      </div>
+    </DndProvider>
+  )
+};
+
+
+
+
+export default withAuthorization(LewisStructure);
+
+
+DragDrop.js
 import React, { useState } from "react";
 import Element from "./Element";
 import { useDrop } from "react-dnd";
-
 
 
 function DragDrop() {
@@ -87,3 +116,27 @@ function DragDrop() {
 }
 
 export default DragDrop;
+
+Element.js
+import React from "react";
+import { useDrag } from 'react-dnd';
+
+
+function Element({ id, symbol }) {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "element-div", //id the type of object you are moving.. Made up the name
+    // collect: (monitor) => ({ //def prop that is accessible, pass isDragging if we want to monitor if we are dragging an element. This is good for conditional styling... Dont need yet
+    //   isDragging: !!monitor.isDragging(),
+    // }),
+    item: {id: id}
+  }));
+
+  return (
+    <div className="LS-element" ref={drag}>
+      <p>{symbol}</p>
+    </div>
+  )
+}
+
+export default Element
+
