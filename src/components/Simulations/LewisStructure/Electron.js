@@ -21,7 +21,7 @@ const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onDelete 
       onClone({ id: newId, x: position.x, y: position.y });
     }
   };
-
+  
   const handleClick = () => {
     const node = elementRef.current;
     if (node && transformerRef.current) {
@@ -39,7 +39,6 @@ const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onDelete 
     }
   };
 
-  
   useEffect(() => {
     // Listen for the node selection change
     if (transformerRef.current) {
@@ -48,6 +47,18 @@ const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onDelete 
     }
   }, [transformerRef]);
 
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if ((e.key === 'Delete' || e.key === 'Backspace') && selected && onDelete) {
+        onDelete();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [onDelete, selected]);
 
   return (
     <Group
@@ -68,12 +79,6 @@ const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onDelete 
       }}
       ref={elementRef}
       onClick={handleClick}
-      onKeyPress={(e) => {
-        if (e.key === 'Delete' || e.key === 'Backspace') {
-          handleDelete();
-        }
-      }}
-      // tabIndex={0}
     >
       <Circle radius={3} fill="white" />
       <Circle x={distanceApart} radius={3} fill="white" />

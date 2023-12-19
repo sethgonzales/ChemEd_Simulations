@@ -1,10 +1,13 @@
-// Element.js
-import React from 'react';
-import { Stage, Layer, Text, Transformer } from 'react-konva';
+//Element.js
+import React, { useState, useRef, useEffect } from 'react';
+import { Text } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const Element = ({ x, y, text, onClone }) => {
+const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
+  const [selected, setSelected] = useState(false);
+  const elementRef = useRef();
+
   const handleClone = (e) => {
     if (onClone) {
       const newX = e.target.x(); // Get the current X coordinate of the element
@@ -14,10 +17,47 @@ const Element = ({ x, y, text, onClone }) => {
     }
   };
 
+  const handleClick = () => {
+    const node = elementRef.current;
+    if (node && transformerRef.current) {
+      const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
+      if (isSelected) {
+        transformerRef.current.nodes([]);
+      } else {
+        transformerRef.current.nodes([node]);
+      }
+    }
+
+    const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
+    if (isSelected && onDelete) {
+      onDelete();
+    }
+  };
+
+  useEffect(() => {
+    // Listen for the node selection change
+    if (transformerRef.current) {
+      const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
+      setSelected(isSelected);
+    }
+  }, [transformerRef]);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if ((e.key === 'Delete' || e.key === 'Backspace') && selected && onDelete) {
+        onDelete();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [onDelete, selected]);
 
   return (
     <Text
-      x={x}a
+      x={x}
       y={y}
       text={text}
       fontSize={20}
@@ -31,9 +71,11 @@ const Element = ({ x, y, text, onClone }) => {
       }}
       onMouseDown={(e) => {
         if (e.evt.metaKey || e.evt.ctrlKey) {
-          handleClone(e); // Pass the event to get the current coordinates during click
+          handleClone(e); 
         }
       }}
+      ref={elementRef}
+      onClick={handleClick}
     />
   );
 };

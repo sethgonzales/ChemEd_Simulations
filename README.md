@@ -71,6 +71,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 1:10: Continue research on konva features
 * 1:40: add cursor elements research rotation
 * 2:20: add rotation research delete
+* 3:00: add transformation to all objects
 
 
 # _ChemEd Simulations_
