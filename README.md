@@ -73,6 +73,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 2:20: add rotation research delete
 * 3:00: add transformation to all objects
 * 3:20: continue research on delete.... :(
+* 3:40: add delete upon double click for elements
 
 
 # _ChemEd Simulations_

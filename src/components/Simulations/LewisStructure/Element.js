@@ -22,6 +22,7 @@ const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
     if (node && transformerRef.current) {
       const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
       if (isSelected) {
+        node.remove(); // Remove the element directly from the stage
         transformerRef.current.nodes([]);
       } else {
         transformerRef.current.nodes([node]);
@@ -34,26 +35,30 @@ const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
     }
   };
 
+  // useEffect(() => {
+  //   const handleKeyPress = (e) => {
+  //     if ((e.key === 'Delete' || e.key === 'Backspace') && selected && onDelete) {
+  //       const node = elementRef.current;
+  //       if (node && transformerRef.current) {
+  //         node.remove();
+  //         transformerRef.current.nodes([]);
+  //         onDelete();
+  //       }
+  //     }
+  //   };
+
+  //   document.addEventListener('keydown', handleKeyPress);
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyPress);
+  //   };
+  // }, [onDelete, selected, transformerRef]);
+
   useEffect(() => {
-    // Listen for the node selection change
     if (transformerRef.current) {
       const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
       setSelected(isSelected);
     }
   }, [transformerRef]);
-
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if ((e.key === 'Delete' || e.key === 'Backspace') && selected && onDelete) {
-        onDelete();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyPress);
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [onDelete, selected]);
 
   return (
     <Text
@@ -71,7 +76,7 @@ const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
       }}
       onMouseDown={(e) => {
         if (e.evt.metaKey || e.evt.ctrlKey) {
-          handleClone(e); 
+          handleClone(e);
         }
       }}
       ref={elementRef}

@@ -69,6 +69,7 @@ const LewisStructure = () => {
     setElements(updatedElements);
   };
 
+
   const handleDeleteBond = () => {
     const selectedBondIds = transformerRef.current.nodes().map((node) => node.getAttr('id'));
     const updatedBonds = bonds.filter((bond) => {
@@ -92,8 +93,8 @@ const LewisStructure = () => {
                   text={element.text}
                   id={element.id}
                   onClone={handleCloneElement}
-                  transformerRef={transformerRef} // Make sure to pass the transformerRef here
-                  onDelete={handleDeleteElement}
+                  transformerRef={transformerRef}
+                  onDelete={handleDeleteElement} // Ensure onDelete points to the correct handler
                 />
               ))}
 
