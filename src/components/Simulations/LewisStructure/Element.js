@@ -23,6 +23,12 @@ const Element = ({ x, y, text, onClone }) => {
       fontSize={20}
       fill="white"
       draggable
+      onMouseOver={() => {
+        document.body.style.cursor = 'pointer';
+      }}
+      onMouseOut={() => {
+        document.body.style.cursor = 'default';
+      }}
       onMouseDown={(e) => {
         if (e.evt.metaKey || e.evt.ctrlKey) {
           handleClone(e); // Pass the event to get the current coordinates during click

@@ -19,12 +19,12 @@ const LewisStructure = () => {
   ]);
 
   const [bonds, setBonds] = useState([
-    { id: uuidv4(), points: [10, 20, 40, 20], x: 30, y: 10 }, // Sample bond between elements
+    { id: uuidv4(), points: [10, 20, 40, 20], x: 110, y: 0 }, // Sample bond between elements
     // Other bonds...
   ]);
 
   const [electrons, setElectrons] = useState([
-    { id: uuidv4(), x: 150, y: 150 }, // Sample electron position
+    { id: uuidv4(), x: 170, y: 20 }, // Sample electron position
     // Other electrons...
   ]);
   const handleCloneElement = ({ x, y, text }) => {
@@ -58,7 +58,6 @@ const LewisStructure = () => {
                   y={element.y}
                   text={element.text}
                   onClone={handleCloneElement}
-
                 />
               ))}
 

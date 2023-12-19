@@ -22,14 +22,24 @@ const Electron = ({ x, y, distanceApart = 10, onClone }) => {
   };
 
   return (
-    <Group x={position.x} y={position.y} draggable onDragMove={handleDragMove} onMouseDown={(e) => {
+    <Group 
+    x={position.x} 
+    y={position.y} 
+    draggable onDragMove={handleDragMove} 
+    onMouseOver={() => {
+      document.body.style.cursor = 'pointer';
+    }}
+    onMouseOut={() => {
+      document.body.style.cursor = 'default';
+    }}
+    onMouseDown={(e) => {
         if (e.evt.metaKey || e.evt.ctrlKey) {
           handleClone(e);
         }
       }}
     >
-      <Circle radius={5} fill="white" />
-      <Circle x={distanceApart} radius={5} fill="white" />
+      <Circle radius={3} fill="white" />
+      <Circle x={distanceApart} radius={3} fill="white" />
     </Group>
   );
 };
