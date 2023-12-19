@@ -132,7 +132,5 @@ const LewisStructure = () => {
   );
 };
 
-
-
 export default withAuthorization(LewisStructure);
 
