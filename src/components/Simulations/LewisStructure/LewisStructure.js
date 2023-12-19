@@ -48,7 +48,7 @@ const LewisStructure = () => {
     <div className='simulation-page'>
       <div className='simulation-container'>
         <div className='LS-container'>
-          <Stage width={window.innerWidth} height={window.innerHeight}>
+          <Stage width={800} height={400}>
             <Layer>
               {/* Render elements */}
               {elements.map((element) => (

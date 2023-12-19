@@ -1,11 +1,11 @@
 .LS-container {
   position: relative;
-  width: 50em;
-  height: 25em;
+  width: 800px;
+  height: 400px;
   background-color: #8186e4;
   border: solid 3px #3e43a7;
   box-shadow: 5px -5px 0px #3e43a7;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   color: white;
 }
 

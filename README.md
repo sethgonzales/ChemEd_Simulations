@@ -66,6 +66,8 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 9:00: Bug fixin
 * 9:40: Begin refactor with new dnd library
 * 10:20: complete basic dnd feature
+* 11:40: Add in a lot of konva features including copy/paste and draggability
+* 11:40: Change styling of stage 
 
 
 # _ChemEd Simulations_
