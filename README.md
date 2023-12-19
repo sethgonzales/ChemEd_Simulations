@@ -53,7 +53,10 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 5:00: finish responsive design
 * 5:20: add in atom to sim page
 
-
+### Monday, 12/18
+* 3:00: Begin working, research drag and drop functionalities
+* 4:00: Continue research drag and drop functionalities
+* 4:30: Create LS route and div elements
 
 # _ChemEd Simulations_
 

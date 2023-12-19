@@ -6,8 +6,9 @@ import LogIn from './components/Account/LogIn';
 import Register from './components/Account/Register';
 import AccountDetails from './components/Account/AccountDetails';
 import Edit from './components/Account/Edit';
-import StatesOfMatter from './components/Simulations/StatesOfMatter/StatesOfMatter';
 import SimulationList from './components/Simulations/SimulationsList';
+import StatesOfMatter from './components/Simulations/StatesOfMatter/StatesOfMatter';
+import LewisStructure from './components/Simulations/LewisStructure/LewisStructure';
 import Footer from './components/Footer';
 import withAuthorization from './components/Account/withAuthorization'; // Import the withAuthorization HOC
 import './App.css';
@@ -24,6 +25,7 @@ const App = () => {
   const ProtectedAccountDetails = withAuthorization(AccountDetails);
   const ProtectedSimulationList = withAuthorization(SimulationList);
   const ProtectedStatesOfMatter = withAuthorization(StatesOfMatter);
+  const ProtectedLewisStructure = withAuthorization(LewisStructure);
 
   return (
     <Router>
@@ -46,6 +48,7 @@ const App = () => {
             />
             <Route path="/simulations" element={<ProtectedSimulationList />} />
             <Route path="/states-of-matter" element={<ProtectedStatesOfMatter />} />
+            <Route path="/lewis-structures" element={<ProtectedLewisStructure />} />
           </Routes>
         </div>
         <Footer />
