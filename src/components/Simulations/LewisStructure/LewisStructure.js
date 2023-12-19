@@ -6,6 +6,7 @@ import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
 const LewisStructure = () => {
   const [elements, setElements] = useState([
     {
+      id: 1,
       symbol: 'H',
       valenceElectrons: 1,
       octet: 2,
@@ -13,12 +14,14 @@ const LewisStructure = () => {
 
     },
     {
+      id: 5,
       symbol: 'B',
       valenceElectrons: 3,
       octet: 8,
       droppableId: 'LS-element-container'
     },
     {
+      id: 6,
       symbol: 'C',
       valenceElectrons: 4,
       octet: 8,
@@ -26,6 +29,7 @@ const LewisStructure = () => {
 
     },
     {
+      id: 7,
       symbol: 'N',
       valenceElectrons: 5,
       octet: 8,
@@ -33,6 +37,7 @@ const LewisStructure = () => {
 
     },
     {
+      id: 8,
       symbol: 'O',
       valenceElectrons: 6,
       octet: 8,
@@ -40,6 +45,7 @@ const LewisStructure = () => {
 
     },
     {
+      id: 9,
       symbol: 'F',
       valenceElectrons: 7,
       octet: 8,
@@ -47,6 +53,7 @@ const LewisStructure = () => {
 
     },
     {
+      id: 17,
       symbol: 'Cl',
       valenceElectrons: 7,
       octet: 8,

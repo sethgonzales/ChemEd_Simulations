@@ -57,6 +57,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 3:00: Begin working, research drag and drop functionalities
 * 4:00: Continue research drag and drop functionalities
 * 4:30: Create LS route and div elements
+* 4:30: Try to develop basic dnd aspect
 
 # _ChemEd Simulations_
 
