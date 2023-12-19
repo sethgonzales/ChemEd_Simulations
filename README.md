@@ -61,6 +61,9 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 7:30: Begin reconfig dnd
 * 9:30: Continue reconfig dnd
 
+### Tuesday, 12/19
+* 8:30: Begin working, continue research
+
 # _ChemEd Simulations_
 
 #### By _**Seth Gonzales**_
