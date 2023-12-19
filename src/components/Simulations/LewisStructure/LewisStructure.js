@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import './LewisStructure.css';
-import withAuthorization from './../../Account/withAuthorization';
-import { Stage, Layer } from 'react-konva';
+import React, { useState, useRef } from 'react';
+import { Stage, Layer, Transformer } from 'react-konva';
 import Element from './Element';
 import Bond from './Bond';
 import Electron from './Electron';
 import { v4 as uuidv4 } from 'uuid';
+import withAuthorization from './../../Account/withAuthorization';
+import './LewisStructure.css';
+
 
 
 const LewisStructure = () => {
+  const transformerRef = useRef(null);
+
   const [elements, setElements] = useState([
     { id: uuidv4(), x: 10, y: 10, text: 'H' },
     { id: uuidv4(), x: 30, y: 10, text: 'C' },
@@ -42,13 +45,27 @@ const LewisStructure = () => {
     setElectrons([...electrons, newElectron]);
   };
 
+  const handleStageClick = (e) => {
+    // If the click target is the stage, deselect any selected elements
+    if (e.target === e.target.getStage()) {
+      transformerRef.current.nodes([]);
+    }
+  };
 
+  const handleDeleteElectron = () => {
+    const updatedElectrons = electrons.filter((electron) => {
+      const isSelected = transformerRef.current.nodes().indexOf(electron.id) !== -1;
+      return !isSelected;
+    });
+    setElectrons(updatedElectrons);
+  };
+  
 
   return (
     <div className='simulation-page'>
       <div className='simulation-container'>
         <div className='LS-container'>
-          <Stage width={800} height={400}>
+          <Stage width={800} height={400} onClick={handleStageClick}>
             <Layer>
               {/* Render elements */}
               {elements.map((element) => (
@@ -72,7 +89,6 @@ const LewisStructure = () => {
                 />
               ))}
 
-
               {/* Render electrons */}
               {electrons.map((electron) => (
                 <Electron
@@ -80,9 +96,11 @@ const LewisStructure = () => {
                   x={electron.x}
                   y={electron.y}
                   onClone={handleCloneElectron}
+                  transformerRef={transformerRef}
+                  onDelete={handleDeleteElectron}
                 />
               ))}
-
+              <Transformer ref={transformerRef} />
             </Layer>
           </Stage>
         </div>

@@ -1,6 +1,6 @@
 // Element.js
 import React from 'react';
-import { Text } from 'react-konva';
+import { Stage, Layer, Text, Transformer } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -17,7 +17,7 @@ const Element = ({ x, y, text, onClone }) => {
 
   return (
     <Text
-      x={x}
+      x={x}a
       y={y}
       text={text}
       fontSize={20}

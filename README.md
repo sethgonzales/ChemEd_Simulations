@@ -70,6 +70,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 11:40: Change styling of stage 
 * 1:10: Continue research on konva features
 * 1:40: add cursor elements research rotation
+* 2:20: add rotation research delete
 
 
 # _ChemEd Simulations_
