@@ -28,7 +28,7 @@
 .LS-element {
   margin: 1em;
   cursor: pointer;
-  z-index: 999; 
+  /* z-index: 999;  */
 }
 
 .LS-element p{
@@ -40,12 +40,6 @@
   color: rgb(36, 36, 36);
 }
 
-.LS-element-container .LS-element {
-  position: relative;
-  margin: 1em;
-  cursor: pointer;
-  z-index: 999;
-}
 
 .LS-element-container .LS-element p {
   width: 2em;

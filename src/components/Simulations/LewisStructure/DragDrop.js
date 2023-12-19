@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Element from "./Element";
+import { useDrop } from "react-dnd";
+
+
 
 function DragDrop() {
   const lsElements = [
@@ -50,19 +53,33 @@ function DragDrop() {
     },
   ];
 
+  const [lsBoard, setLsBoard] = useState([]); //monitors which elements are in the ls container
 
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: "element-div",
+    drop: (element) => addElementToBoard(element.id), //function whenever we drop an item, id which element we are adding to the board
+    collect: (monitor) => ({ 
+      isOver: !!monitor.isOver(),
+    }),
+  }))
 
+  const addElementToBoard = (id) => { //id element and add to our board
+    const elementList = lsElements.filter((element) => id === element.id);
+    setLsBoard((lsBoard) => [...lsBoard, elementList[0]]); //make copy of state with new element added
+  }
   return (
     <div className='simulation-page'>
       <h1>Lewis Structures</h1>
       <div className='simulation-container'>
         <div className="LS-element-container">
           {lsElements.map((element) => (
-            <Element key={element.id} symbol={element.symbol} id={element.id} /> //left out the symbol, might need this
+            <Element key={element.id} symbol={element.symbol} id={element.id} />
           ))}
         </div>
-        <div className="LS-container">
-          {/* Other Drag and Drop content goes here */}
+        <div className="LS-container" ref={drop}>
+          {lsBoard.map((element) => (
+            <Element key={element.id} symbol={element.symbol} id={element.id} />
+          ))}
         </div>
       </div>
     </div>
