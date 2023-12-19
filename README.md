@@ -64,6 +64,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 ### Tuesday, 12/19
 * 8:30: Begin working, continue research
 * 9:00: Bug fixin
+* 9:40: Begin refactor with new dnd library
 # _ChemEd Simulations_
 
 #### By _**Seth Gonzales**_
