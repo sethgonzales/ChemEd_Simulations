@@ -2,14 +2,15 @@
   position: relative;
   width: 50em;
   height: 25em;
-  background-color: #ffffff;
+  background-color: #8186e4;
   border: solid 3px #3e43a7;
   box-shadow: 5px -5px 0px #3e43a7;
   border-radius: 20px;
-  color: black;
+  color: white;
 }
 
 .LS-container p{
+  background-color: #fab87e;
   color: black;
 }
 
@@ -17,7 +18,7 @@
   position: relative;
   width: 4em;
   height: 25em;
-  /* margin: 2em; */
+  margin: 2em;
   background-color: #fab87e;
   box-shadow: -5px 5px 0px #ec7d1c;
   border: solid 3px #ec7d1c;

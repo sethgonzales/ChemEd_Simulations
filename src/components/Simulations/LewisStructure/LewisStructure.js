@@ -1,3 +1,6 @@
+
+
+
 import React, { useState, useCallback } from 'react'; // Import useCallback from React
 import './LewisStructure.css';
 import withAuthorization from './../../Account/withAuthorization';
@@ -34,20 +37,22 @@ const DraggableElement = ({ id, symbol }) => {
   );
 };
 
-const DroppableContainer = ({ id, children }) => {
+const DroppableContainer = ({ containerId, children }) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: id.toString(),
+    id: containerId.toString(),
   });
+  const containerClassName = containerId === 'LS-container' ? 'LS-element-container' : 'OtherClassName';
   const style = {
-    backgroundColor: isOver ? 'lightblue' : 'transparent',
+    backgroundColor: isOver ? 'lightblue' : '',
   };
 
   return (
-    <div ref={setNodeRef} className={id === 'LS-container' ? 'LS-element-container' : 'LS-container'} style={style}>
+    <div ref={setNodeRef} className={containerClassName} style={style}>
       {children} {/* Render the draggable elements here */}
     </div>
   );
 };
+
 
 
 
@@ -120,7 +125,8 @@ const LewisStructure = () => {
       console.log('Dragged element:', draggedElement);
       console.log('Dropped into:', over.id);
       
-      if (draggedElement && over.id === 'droppable') {
+      if (draggedElement && over.id === 'LS-container') {
+
         const updatedElements = elements.filter((el) => el.id !== draggedElement.id);
         setElements(updatedElements);
       }
