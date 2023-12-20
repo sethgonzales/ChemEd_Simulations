@@ -74,12 +74,12 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 3:00: add transformation to all objects
 * 3:20: continue research on delete.... :(
 * 3:40: add delete upon double click for elements
+* 4:20: continue delete refactor
 
 
 # _ChemEd Simulations_
 
 #### By _**Seth Gonzales**_
-
 
 ## Technologies Used
 
