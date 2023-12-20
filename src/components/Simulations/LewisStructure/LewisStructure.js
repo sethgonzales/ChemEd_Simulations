@@ -31,6 +31,8 @@ const LewisStructure = () => {
     { id: uuidv4(), x: 170, y: 20 }, // Sample electron position
     // Other electrons...
   ]);
+
+
   const handleCloneElement = ({ x, y, text }) => {
     const newElement = { id: uuidv4(), x, y, text };
     setElements([...elements, newElement]);
@@ -46,18 +48,33 @@ const LewisStructure = () => {
     setElectrons([...electrons, newElectron]);
   };
 
-  const handleStageClick = (e) => {
-    // If the click target is the stage, deselect any selected elements
-    if (e.target === e.target.getStage()) {
-      transformerRef.current.nodes([]);
+  const handleClick = (itemRef) => {
+    const node = itemRef.current;
+    if (node && transformerRef.current) {
+      const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
+      if (isSelected) {
+        transformerRef.current.nodes([]);
+      } else {
+        transformerRef.current.nodes([node]);
+      }
     }
   };
 
-  const handleDeleteSelected = () => {
-    const selectedElementIds = transformerRef.current.nodes().map((node) => node.getAttr('id'));
-    // Handle deletion logic based on the selected elements
-    // For example, removing elements from the state based on IDs
-    // Similar to what you've done in handleDeleteElement, handleDeleteBond, etc.
+
+
+  // const handleStageClick = (e) => {
+  //   // If the click target is the stage, deselect any selected elements
+  //   if (e.target === e.target.getStage()) {
+  //     transformerRef.current.nodes([]);
+  //   }
+  // };
+
+  const handleDeleteSelected = (itemType, stateUpdater) => {
+    const selectedIds = transformerRef.current.nodes().map((node) => node.getAttr('id'));
+
+    stateUpdater((prevState) =>
+      prevState.filter((item) => !selectedIds.includes(item.id))
+    );
   };
 
 
@@ -76,6 +93,8 @@ const LewisStructure = () => {
                   text={element.text}
                   id={element.id}
                   onClone={handleCloneElement}
+                  onClick={() => handleClick(elementRef)}
+
                   transformerRef={transformerRef}
                 />
 
@@ -91,6 +110,8 @@ const LewisStructure = () => {
                   id={bond.id}
                   onClone={handleCloneBond}
                   transformerRef={transformerRef}
+                  onClick={() => handleClick(bondRef)}
+
                 />
               ))}
 
@@ -103,12 +124,14 @@ const LewisStructure = () => {
                   id={electron.id} // Add an id attribute
                   onClone={handleCloneElectron}
                   transformerRef={transformerRef}
+                  onClick={() => handleClick(electronRef)}
+
                 />
               ))}
               <Transformer ref={transformerRef} />
             </Layer>
           </Stage>
-          <button onClick={handleDeleteSelected}>Delete Selected</button>
+          <button onClick={() => handleDeleteSelected('elements', setElements)}>Delete Selected</button>
 
         </div>
       </div>

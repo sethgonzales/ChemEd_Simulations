@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Line } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
 
-const Bond = ({ points, x, y, onClone, transformerRef, onDelete  }) => {
+const Bond = ({ points, x, y, onClone, transformerRef, onClick }) => {
   const [selected, setSelected] = useState(false);
   const elementRef = useRef();
 
@@ -16,22 +16,17 @@ const Bond = ({ points, x, y, onClone, transformerRef, onDelete  }) => {
     }
   };
 
-  const handleClick = () => {
-    const node = elementRef.current;
-    if (node && transformerRef.current) {
-      const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
-      if (isSelected) {
-        transformerRef.current.nodes([]);
-      } else {
-        transformerRef.current.nodes([node]);
-      }
-    }
-
-    const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
-    if (isSelected && onDelete) {
-      onDelete();
-    }
-  };
+  // const handleClick = () => {
+  //   const node = elementRef.current;
+  //   if (node && transformerRef.current) {
+  //     const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
+  //     if (isSelected) {
+  //       transformerRef.current.nodes([]);
+  //     } else {
+  //       transformerRef.current.nodes([node]);
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     // Listen for the node selection change
@@ -40,19 +35,6 @@ const Bond = ({ points, x, y, onClone, transformerRef, onDelete  }) => {
       setSelected(isSelected);
     }
   }, [transformerRef]);
-
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if ((e.key === 'Delete' || e.key === 'Backspace') && selected && onDelete) {
-        onDelete();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyPress);
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [onDelete, selected]);
 
 
   return (
@@ -74,8 +56,8 @@ const Bond = ({ points, x, y, onClone, transformerRef, onDelete  }) => {
           handleClone(e);
         }
       }}
-      ref={elementRef}
-      onClick={handleClick}
+      onClick={onClick} // Handle click event using the provided function
+      ref={bondRef}
     />
   );
 };
