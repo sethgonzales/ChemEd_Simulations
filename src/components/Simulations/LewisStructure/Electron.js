@@ -1,18 +1,11 @@
-//Electron.js
 import React, { useState, useRef, useEffect } from 'react';
 import { Group, Circle } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
 
-const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onClick, electronRef }) => {
-  const handleClick = () => {
-    if (onClick) {
-      onClick(electronRef);
-    }
-  };
- 
-  const [position, setPosition] = useState({ x, y });
+const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onDelete }) => {
   const [selected, setSelected] = useState(false);
-  
+  const [position, setPosition] = useState({ x, y });
+  const elementRef = useRef();
 
   const handleDragMove = (e) => {
     const newPosition = {
@@ -29,24 +22,43 @@ const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onClick, 
     }
   };
   
-  // const handleClick = () => {
-  //   const node = elementRef.current;
-  //   if (node && transformerRef.current) {
-  //     const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
-  //     if (isSelected) {
-  //       transformerRef.current.nodes([]);
-  //     } else {
-  //       transformerRef.current.nodes([node]);
-  //     }
-  //   }
-  // }
+  const handleClick = () => {
+    const node = elementRef.current;
+    if (node && transformerRef.current) {
+      const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
+      if (isSelected) {
+        transformerRef.current.nodes([]);
+      } else {
+        transformerRef.current.nodes([node]);
+      }
+    }
+
+    const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
+    if (isSelected && onDelete) {
+      onDelete();
+    }
+  };
 
   useEffect(() => {
+    // Listen for the node selection change
     if (transformerRef.current) {
-      const isSelected = transformerRef.current.nodes().indexOf(electronRef.current) !== -1;
+      const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
       setSelected(isSelected);
     }
   }, [transformerRef]);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if ((e.key === 'Delete' || e.key === 'Backspace') && selected && onDelete) {
+        onDelete();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [onDelete, selected]);
 
   return (
     <Group
@@ -65,8 +77,8 @@ const Electron = ({ x, y, distanceApart = 10, onClone, transformerRef, onClick, 
           handleClone(e);
         }
       }}
+      ref={elementRef}
       onClick={handleClick}
-      ref={electronRef}
     >
       <Circle radius={3} fill="white" />
       <Circle x={distanceApart} radius={3} fill="white" />

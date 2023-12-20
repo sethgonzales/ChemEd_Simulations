@@ -1,0 +1,54 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { Transformer } from 'react-konva';
+
+const withSelection = (WrappedComponent) => {
+  const WithSelection = (props) => {
+    const [selected, setSelected] = useState(false);
+    const transformerRef = useRef(null);
+    const wrappedComponentRef = useRef(null);
+
+    const handleClick = () => {
+      setSelected(!selected);
+      // Additional logic for item selection/unselection
+    };
+
+    useEffect(() => {
+      if (transformerRef.current && wrappedComponentRef.current) {
+        if (selected) {
+          transformerRef.current.nodes([wrappedComponentRef.current]);
+          transformerRef.current.getLayer().batchDraw();
+        } else {
+          transformerRef.current.nodes([]);
+          transformerRef.current.getLayer().batchDraw();
+        }
+      }
+    }, [selected]);
+
+    return (
+      <React.Fragment>
+        <WrappedComponent
+          {...props}
+          selected={selected}
+          onClick={handleClick}
+          wrappedComponentRef={(ref) => {
+            if (ref) wrappedComponentRef.current = ref;
+          }}
+        />
+        {selected && (
+          <Transformer
+            ref={transformerRef}
+            nodes={[wrappedComponentRef.current]}
+            ignoreStroke={true}
+            keepRatio={false}
+            rotationSnaps={[0, 90, 180, 270]} // Set rotation snaps
+            enabledAnchors={['top-left', 'top-right', 'bottom-left', 'bottom-right']} // Enable anchors for scaling
+          />
+        )}
+      </React.Fragment>
+    );
+  };
+
+  return WithSelection;
+};
+
+export default withSelection;
