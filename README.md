@@ -79,6 +79,8 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 ### Tuesday, 12/19
 * 8:30: Begin working, work on resize bugs
 * 9:00: Fix resize issues
+* 9:40: begin refactor of click and delete to form factory functions
+* 10:20: change selection to HOC
 
 # _ChemEd Simulations_
 

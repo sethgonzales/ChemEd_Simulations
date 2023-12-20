@@ -2,11 +2,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Text } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
+import withSelection from './withSelection';
 
 
-const Element = ({ x, y, text, onClone, transformerRef }) => {
-  const [selected, setSelected] = useState(false);
-  const elementRef = useRef();
+
+const Element = ({ x, y, text, onClone, onClick, selected }) => {
 
   const handleClone = (e) => {
     if (onClone) {
@@ -17,33 +17,13 @@ const Element = ({ x, y, text, onClone, transformerRef }) => {
     }
   };
 
-  // const handleClick = () => {
-  //   const node = elementRef.current;
-  //   if (node && transformerRef.current) {
-  //     const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
-  //     if (!isSelected) {
-  //       transformerRef.current.nodes([node]);
-  //     } else {
-  //       transformerRef.current.nodes([]); 
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (transformerRef.current) {
-  //     const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
-  //     setSelected(isSelected);
-  //   }
-  // }, [transformerRef]);
-
-
   return (
     <Text
       x={x}
       y={y}
       text={text}
       fontSize={20}
-      fill="white"
+      fill={selected ? 'red' : 'white'}
       draggable
       onMouseOver={() => {
         document.body.style.cursor = 'pointer';
@@ -56,11 +36,11 @@ const Element = ({ x, y, text, onClone, transformerRef }) => {
           handleClone(e);
         }
       }}
-      ref={elementRef}
-      onClick={handleClick}
+      onClick={onClick}
     />
   );
 };
 
 
-export default Element;
+export default withSelection(Element);
+

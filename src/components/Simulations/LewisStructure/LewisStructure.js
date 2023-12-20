@@ -7,11 +7,16 @@ import Electron from './Electron';
 import { v4 as uuidv4 } from 'uuid';
 import withAuthorization from './../../Account/withAuthorization';
 import './LewisStructure.css';
+import withSelection from './withSelection';
 
 
+const ElementWithSelection = withSelection(Element);
 
 const LewisStructure = () => {
   const transformerRef = useRef(null);
+  const elementRefs = useRef([]);
+  const bondRefs = useRef([]);
+  const electronRefs = useRef([]);
 
   const [elements, setElements] = useState([
     { id: uuidv4(), x: 10, y: 10, text: 'H' },
@@ -53,9 +58,9 @@ const LewisStructure = () => {
     if (node && transformerRef.current) {
       const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
       if (isSelected) {
-        transformerRef.current.nodes([]);
+        transformerRef.current.nodes([]); // Deselect if already selected
       } else {
-        transformerRef.current.nodes([node]);
+        transformerRef.current.nodes([node]); // Select if not already selected
       }
     }
   };
@@ -82,26 +87,23 @@ const LewisStructure = () => {
     <div className='simulation-page'>
       <div className='simulation-container'>
         <div className='LS-container'>
-          <Stage width={800} height={400} onClick={handleStageClick}>
+          <Stage width={800} height={400}>
             <Layer>
               {/* Render elements */}
-              {elements.map((element) => (
-                <Element
+              {elements.map((element, index) => (
+                <ElementWithSelection
                   key={element.id}
                   x={element.x}
                   y={element.y}
                   text={element.text}
                   id={element.id}
                   onClone={handleCloneElement}
-                  onClick={() => handleClick(elementRef)}
-
-                  transformerRef={transformerRef}
                 />
 
               ))}
 
               {/* Render bonds */}
-              {bonds.map((bond) => (
+              {bonds.map((bond, index) => (
                 <Bond
                   key={bond.id}
                   points={bond.points}
@@ -110,22 +112,22 @@ const LewisStructure = () => {
                   id={bond.id}
                   onClone={handleCloneBond}
                   transformerRef={transformerRef}
-                  onClick={() => handleClick(bondRef)}
-
+                  onClick={() => handleClick(bondRefs.current[index])}
+                  bondRef={(el) => (bondRefs.current[index] = el)}
                 />
               ))}
 
               {/* Render electrons */}
-              {electrons.map((electron) => (
+              {electrons.map((electron, index) => (
                 <Electron
                   key={electron.id}
                   x={electron.x}
                   y={electron.y}
-                  id={electron.id} // Add an id attribute
+                  id={electron.id}
                   onClone={handleCloneElectron}
                   transformerRef={transformerRef}
-                  onClick={() => handleClick(electronRef)}
-
+                  onClick={() => handleClick(electronRefs.current[index])}
+                  electronRef={(el) => (electronRefs.current[index] = el)}
                 />
               ))}
               <Transformer ref={transformerRef} />

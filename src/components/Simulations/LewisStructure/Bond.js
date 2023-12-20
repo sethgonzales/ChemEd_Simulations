@@ -3,9 +3,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Line } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
 
-const Bond = ({ points, x, y, onClone, transformerRef, onClick }) => {
+const Bond = ({ points, x, y, onClone, transformerRef, onClick, bondRef }) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick(bondRef);
+    }
+  };
+  
   const [selected, setSelected] = useState(false);
-  const elementRef = useRef();
 
   const handleClone = (e) => {
     if (onClone) {
@@ -29,9 +34,8 @@ const Bond = ({ points, x, y, onClone, transformerRef, onClick }) => {
   // };
 
   useEffect(() => {
-    // Listen for the node selection change
     if (transformerRef.current) {
-      const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
+      const isSelected = transformerRef.current.nodes().indexOf(bondRef.current) !== -1;
       setSelected(isSelected);
     }
   }, [transformerRef]);
@@ -56,7 +60,7 @@ const Bond = ({ points, x, y, onClone, transformerRef, onClick }) => {
           handleClone(e);
         }
       }}
-      onClick={onClick} // Handle click event using the provided function
+      onClick={handleClick}
       ref={bondRef}
     />
   );
