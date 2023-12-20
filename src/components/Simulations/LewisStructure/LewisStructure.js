@@ -9,26 +9,25 @@ import withAuthorization from './../../Account/withAuthorization';
 import './LewisStructure.css';
 
 
-
 const LewisStructure = () => {
   const transformerRef = useRef(null);
 
   const [elements, setElements] = useState([
     { id: uuidv4(), x: 10, y: 10, text: 'H' },
-    { id: uuidv4(), x: 30, y: 10, text: 'C' },
-    { id: uuidv4(), x: 50, y: 10, text: 'N' },
-    { id: uuidv4(), x: 70, y: 10, text: 'O' },
-    { id: uuidv4(), x: 90, y: 10, text: 'F' },
+    { id: uuidv4(), x: 40, y: 10, text: 'C' },
+    { id: uuidv4(), x: 70, y: 10, text: 'N' },
+    { id: uuidv4(), x: 100, y: 10, text: 'O' },
+    { id: uuidv4(), x: 130, y: 10, text: 'F' },
     // Other elements...
   ]);
 
   const [bonds, setBonds] = useState([
-    { id: uuidv4(), points: [10, 20, 40, 20], x: 110, y: 0 }, // Sample bond between elements
+    { id: uuidv4(), points: [0, 20, 40, 20], x: 160, y: 0 }, // Sample bond between elements
     // Other bonds...
   ]);
 
   const [electrons, setElectrons] = useState([
-    { id: uuidv4(), x: 170, y: 20 }, // Sample electron position
+    { id: uuidv4(), x: 220, y: 20 }, // Sample electron position
     // Other electrons...
   ]);
   const handleCloneElement = ({ x, y, text }) => {
@@ -53,12 +52,35 @@ const LewisStructure = () => {
     }
   };
 
-  const handleDeleteSelected = () => {
-    const selectedElementIds = transformerRef.current.nodes().map((node) => node.getAttr('id'));
-
+  const handleKeyPress = (event) => {
+    if ((event.key === 'Delete' || event.key === 'Backspace') && transformerRef.current) {
+      const selectedNodes = transformerRef.current.nodes();
+      if (selectedNodes.length > 0) {
+        selectedNodes.forEach((selectedNode) => {
+          selectedNode.remove();
+        });
+        transformerRef.current.nodes([]);
+      }
+    }
   };
 
-
+  const handleClick = (node) => {
+    if (node && transformerRef.current) {
+      const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
+  
+      if (!isSelected) {
+        transformerRef.current.nodes([node]);
+        document.addEventListener('keydown', handleKeyPress);
+      } else {
+        const selectedNodes = transformerRef.current.nodes();
+        if (selectedNodes.length > 0) {
+          transformerRef.current.nodes([]);
+        }
+        document.removeEventListener('keydown', handleKeyPress);
+      }
+    }
+  };
+  
   return (
     <div className='simulation-page'>
       <div className='simulation-container'>
@@ -75,6 +97,9 @@ const LewisStructure = () => {
                   id={element.id}
                   onClone={handleCloneElement}
                   transformerRef={transformerRef}
+                  handleKeyPress={handleKeyPress} // Pass handleKeyPress as a prop
+                  handleClick={handleClick} // Pass handleClick as a prop
+
                 />
 
               ))}
@@ -106,8 +131,6 @@ const LewisStructure = () => {
               <Transformer ref={transformerRef} />
             </Layer>
           </Stage>
-          <button onClick={handleDeleteSelected}>Delete Selected</button>
-
         </div>
       </div>
     </div>

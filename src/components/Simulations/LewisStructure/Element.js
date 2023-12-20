@@ -3,8 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Text } from 'react-konva';
 import { v4 as uuidv4 } from 'uuid';
 
-
-const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
+const Element = ({ x, y, text, id, onClone, transformerRef, handleClick }) => {
   const [selected, setSelected] = useState(false);
   const elementRef = useRef();
 
@@ -17,16 +16,8 @@ const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
     }
   };
 
-  const handleClick = () => {
-    const node = elementRef.current;
-    if (node && transformerRef.current) {
-      const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
-      if (!isSelected) {
-        transformerRef.current.nodes([node]);
-      } else {
-        transformerRef.current.nodes([]); // Deselect the element instead of deleting it
-      }
-    }
+  const handleClickLocal = () => {
+    handleClick(elementRef.current);
   };
 
   useEffect(() => {
@@ -36,29 +27,30 @@ const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
     }
   }, [transformerRef]);
 
-
   return (
-    <Text
-      x={x}
-      y={y}
-      text={text}
-      fontSize={20}
-      fill="white"
-      draggable
-      onMouseOver={() => {
-        document.body.style.cursor = 'pointer';
-      }}
-      onMouseOut={() => {
-        document.body.style.cursor = 'default';
-      }}
-      onMouseDown={(e) => {
-        if (e.evt.metaKey || e.evt.ctrlKey) {
-          handleClone(e);
-        }
-      }}
-      ref={elementRef}
-      onClick={handleClick}
-    />
+    <React.Fragment>
+      <Text
+        x={x}
+        y={y}
+        text={text}
+        fontSize={30}
+        fill="white"
+        draggable
+        onMouseOver={() => {
+          document.body.style.cursor = 'pointer';
+        }}
+        onMouseOut={() => {
+          document.body.style.cursor = 'default';
+        }}
+        onMouseDown={(e) => {
+          if (e.evt.metaKey || e.evt.ctrlKey) {
+            handleClone(e);
+          }
+        }}
+        ref={elementRef}
+        onClick={handleClickLocal}
+      />
+    </React.Fragment>
   );
 };
 
