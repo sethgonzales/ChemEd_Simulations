@@ -1,6 +1,6 @@
 .LS-container {
   position: relative;
-  width: 800px;
+  width: 1000px;
   height: 400px;
   margin-top: 4em;
   background-color: #8186e4;
@@ -15,7 +15,7 @@
   color: white;
 } */
 
-.LS-element-container {
+/* .LS-element-container {
   position: relative;
   width: 4em;
   height: 25em;
@@ -24,7 +24,7 @@
   box-shadow: -5px 5px 0px #ec7d1c;
   border: solid 3px #ec7d1c;
   border-radius: 20px;
-}
+} */
 
 .LS-element {
   margin: 1em;

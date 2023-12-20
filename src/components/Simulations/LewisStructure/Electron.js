@@ -1,54 +1,47 @@
 //Electron.js
-import React, { useState, useRef } from 'react';
-import { Group, Circle } from 'react-konva';
+import React, { useRef } from 'react';
+import { Circle } from 'react-konva';
 
 
-const Electron = ({ x, y, distanceApart = 10, onClone, handleClick }) => {
-  const [position, setPosition] = useState({ x, y });
+const Electron = ({ x, y, onClone, handleClick }) => {
   const electronRef = useRef();
-
-  const handleDragMove = (e) => {
-    const newPosition = {
-      x: e.target.x(),
-      y: e.target.y(),
-    };
-    setPosition(newPosition);
-  };
-  
 
   const handleClickLocal = () => {
     handleClick(electronRef.current);
   };
 
-  const handleCloneLocal = () => {
+  const handleCloneLocal = (e) => {
     if (onClone) {
-      onClone({ x: position.x, y: position.y });
+      const newX = e.target.x();
+      const newY = e.target.y();
+      onClone({ x: newX, y: newY });
     }
   };
 
   return (
-    <Group
-      x={position.x}
-      y={position.y}
-      draggable
-      onDragMove={handleDragMove}
-      onMouseOver={() => {
-        document.body.style.cursor = 'pointer';
-      }}
-      onMouseOut={() => {
-        document.body.style.cursor = 'default';
-      }}
-      onMouseDown={(e) => {
-        if (e.evt.metaKey || e.evt.ctrlKey) {
-          handleCloneLocal(e);
-        }
-      }}
-      ref={electronRef}
-      onClick={handleClickLocal}
-    >
-      <Circle radius={3} fill="white" />
-      <Circle x={distanceApart} radius={3} fill="white" />
-    </Group>
+    <React.Fragment>
+      <Circle
+        x={x}
+        y={y}
+        fill="white"
+        radius={3} 
+        draggable
+        onMouseOver={() => {
+          document.body.style.cursor = 'pointer';
+        }}
+        onMouseOut={() => {
+          document.body.style.cursor = 'default';
+        }}
+        onMouseDown={(e) => {
+          if (e.evt.metaKey || e.evt.ctrlKey) {
+            handleCloneLocal(e);
+          }
+        }}
+        ref={electronRef}
+        onClick={handleClickLocal}
+      />
+    </React.Fragment>
+
   );
 };
 

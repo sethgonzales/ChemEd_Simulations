@@ -23,7 +23,7 @@ const Element = ({ x, y, text, onClone, handleClick }) => {
         x={x}
         y={y}
         text={text}
-        fontSize={30}
+        fontSize={25}
         fill="white"
         draggable
         onMouseOver={() => {
