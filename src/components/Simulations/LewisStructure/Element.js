@@ -21,37 +21,13 @@ const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
     const node = elementRef.current;
     if (node && transformerRef.current) {
       const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
-      if (isSelected) {
-        node.remove(); // Remove the element directly from the stage
-        transformerRef.current.nodes([]);
-      } else {
+      if (!isSelected) {
         transformerRef.current.nodes([node]);
+      } else {
+        transformerRef.current.nodes([]); // Deselect the element instead of deleting it
       }
     }
-
-    const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
-    if (isSelected && onDelete) {
-      onDelete();
-    }
   };
-
-  // useEffect(() => {
-  //   const handleKeyPress = (e) => {
-  //     if ((e.key === 'Delete' || e.key === 'Backspace') && selected && onDelete) {
-  //       const node = elementRef.current;
-  //       if (node && transformerRef.current) {
-  //         node.remove();
-  //         transformerRef.current.nodes([]);
-  //         onDelete();
-  //       }
-  //     }
-  //   };
-
-  //   document.addEventListener('keydown', handleKeyPress);
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyPress);
-  //   };
-  // }, [onDelete, selected, transformerRef]);
 
   useEffect(() => {
     if (transformerRef.current) {
@@ -59,6 +35,7 @@ const Element = ({ x, y, text, onClone, transformerRef, onDelete }) => {
       setSelected(isSelected);
     }
   }, [transformerRef]);
+
 
   return (
     <Text

@@ -53,30 +53,13 @@ const LewisStructure = () => {
     }
   };
 
-  const handleDeleteElectron = () => {
-    const selectedElectronIds = transformerRef.current.nodes().map((node) => node.getAttr('id'));
-    const updatedElectrons = electrons.filter((electron) => {
-      return !selectedElectronIds.includes(electron.id);
-    });
-    setElectrons(updatedElectrons);
-  };
-
-  const handleDeleteElement = () => {
+  const handleDeleteSelected = () => {
     const selectedElementIds = transformerRef.current.nodes().map((node) => node.getAttr('id'));
-    const updatedElements = elements.filter((element) => {
-      return !selectedElementIds.includes(element.id);
-    });
-    setElements(updatedElements);
+    // Handle deletion logic based on the selected elements
+    // For example, removing elements from the state based on IDs
+    // Similar to what you've done in handleDeleteElement, handleDeleteBond, etc.
   };
 
-
-  const handleDeleteBond = () => {
-    const selectedBondIds = transformerRef.current.nodes().map((node) => node.getAttr('id'));
-    const updatedBonds = bonds.filter((bond) => {
-      return !selectedBondIds.includes(bond.id);
-    });
-    setBonds(updatedBonds);
-  };
 
   return (
     <div className='simulation-page'>
@@ -94,8 +77,8 @@ const LewisStructure = () => {
                   id={element.id}
                   onClone={handleCloneElement}
                   transformerRef={transformerRef}
-                  onDelete={handleDeleteElement} // Ensure onDelete points to the correct handler
                 />
+
               ))}
 
               {/* Render bonds */}
@@ -108,7 +91,6 @@ const LewisStructure = () => {
                   id={bond.id}
                   onClone={handleCloneBond}
                   transformerRef={transformerRef}
-                  onDelete={handleDeleteBond}
                 />
               ))}
 
@@ -121,12 +103,13 @@ const LewisStructure = () => {
                   id={electron.id} // Add an id attribute
                   onClone={handleCloneElectron}
                   transformerRef={transformerRef}
-                  onDelete={handleDeleteElectron}
                 />
               ))}
               <Transformer ref={transformerRef} />
             </Layer>
           </Stage>
+          <button onClick={handleDeleteSelected}>Delete Selected</button>
+
         </div>
       </div>
     </div>
