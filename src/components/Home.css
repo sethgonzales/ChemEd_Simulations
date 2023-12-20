@@ -46,7 +46,7 @@
   max-width: 15em;
   position: absolute;
   top: 13em;
-  left: 0em;
+  left: 2em;
   z-index: -1;
 }
 
@@ -54,7 +54,7 @@
   max-width: 10em;
   position: absolute;
   top: 15em;
-  right: 4em;
+  right: 6em;
   z-index: -1;
 }
 
@@ -64,7 +64,7 @@
 }
 
 
-/* Media query for medium devices (e.g., tablets) */
+/* Media query for large devices (e.g., desktops) */
 @media screen and (min-width: 1090px) and (max-width: 1250px) {
   .home-top-left {
     max-width: 11em;
@@ -73,7 +73,7 @@
   }
 
   .home-top-right {
-    max-width: 9em;
+    max-width: 8em;
     top: 15em;
     right: 4em;
   }
@@ -95,7 +95,7 @@
   
 }
 
-/* Media query for small devices (e.g., phones) */
+/* Media query for medium/large devices (e.g., laptops) */
 @media screen and (max-width: 1090px) {
   .home-blurb h1,
   .home-mission h1 {
@@ -118,21 +118,23 @@
   .home-top-left,
   .home-top-right {
     position: relative;
-    width: calc(50% - 30px); /* Adjust the width and subtract smaller margins */
-    margin: 30px; /* Adjust margins between images */
-    max-width: 8em;
+    margin: 55px; 
+    max-width: 7em;
     z-index: -1;
     top: 0;
+  }
 
+  .home-mission {
+    margin-top: 0em;
   }
 }
 
-
+/* Media query for medium devices (e.g., tablets) */
 @media screen and (max-width: 576px) {
   .home-top-left,
   .home-top-right {
-    margin: 30px; /* Adjust margins between images */
-    max-width: 6em;
+    margin: 60px; 
+    max-width: 5em;
   }
 
   .home-blurb p,
@@ -147,13 +149,20 @@
   
 }
 
-@media screen and (max-width: 425px) {
+/* Media query for small devices (e.g., phones) */
+@media screen and (max-width: 517px) {
   .home-top-left {
     display: none;
   }
   .home-top-right {
-    margin-left: 10em;
-    max-width: 6em;
+    /* margin-left: 12em; */
+    margin: 1em;
+    max-width: 5em;
+    right: 0;
+  }
+
+  .home-mission {
+    width: 100%;
   }
 
   .home-blurb p,
@@ -163,6 +172,11 @@
 
   .home-blurb h1,
   .home-mission h1 {
-    font-size: 20px;
+    font-size: 18px;
+  }
+  
+  .home-mission li {
+    margin-left: -2em;
+    text-align: left;
   }
 }

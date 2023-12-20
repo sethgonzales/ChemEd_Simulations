@@ -76,6 +76,9 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 3:40: add delete upon double click for elements
 * 4:20: continue delete refactor
 
+### Tuesday, 12/19
+* 8:30: Begin working, work on resize bugs
+* 9:00: Fix resize issues
 
 # _ChemEd Simulations_
 
