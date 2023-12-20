@@ -86,6 +86,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 12:30: refactor clone so that it is in parent object
 * 1:50: work on implementing undo/redo
 * 2:30: undo undo and redo... work on fixing copy bug
+* 3:10: give up on copy bug... Move on to adding more elements
 
 # _ChemEd Simulations_
 

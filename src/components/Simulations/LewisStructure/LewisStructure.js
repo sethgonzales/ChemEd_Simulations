@@ -14,20 +14,33 @@ const LewisStructure = () => {
 
   const [elements, setElements] = useState([
     { id: uuidv4(), x: 10, y: 10, text: 'H' },
-    { id: uuidv4(), x: 40, y: 10, text: 'C' },
-    { id: uuidv4(), x: 70, y: 10, text: 'N' },
-    { id: uuidv4(), x: 100, y: 10, text: 'O' },
-    { id: uuidv4(), x: 130, y: 10, text: 'F' },
+    { id: uuidv4(), x: 190, y: 10, text: 'He' },
+    { id: uuidv4(), x: 40, y: 35, text: 'B' },
+    { id: uuidv4(), x: 70, y: 35, text: 'C' },
+    { id: uuidv4(), x: 100, y: 35, text: 'N' },
+    { id: uuidv4(), x: 130, y: 35, text: 'O' },
+    { id: uuidv4(), x: 160, y: 35, text: 'F' },
+    { id: uuidv4(), x: 190, y: 35, text: 'Ne' },
+    { id: uuidv4(), x: 70, y: 35, text: 'Si' },
+    { id: uuidv4(), x: 160, y: 35, text: 'P' },
+    { id: uuidv4(), x: 160, y: 35, text: 'S' },
+    { id: uuidv4(), x: 160, y: 35, text: 'Cl' },
+    { id: uuidv4(), x: 160, y: 35, text: 'Ar' },
+    { id: uuidv4(), x: 160, y: 35, text: 'Se' },
+    { id: uuidv4(), x: 160, y: 35, text: 'Br' },
+    { id: uuidv4(), x: 160, y: 35, text: 'Kr' },
+    { id: uuidv4(), x: 160, y: 35, text: 'I' },
+    { id: uuidv4(), x: 160, y: 35, text: 'Xe' },
     // Other elements...
   ]);
 
   const [bonds, setBonds] = useState([
-    { id: uuidv4(), points: [0, 20, 40, 20], x: 160, y: 0 }, 
+    { id: uuidv4(), points: [0, 20, 40, 20], x: 260, y: 0 }, // 
     // Other bonds...
   ]);
 
   const [electrons, setElectrons] = useState([
-    { id: uuidv4(), x: 220, y: 20 }, 
+    { id: uuidv4(), x: 320, y: 20 }, 
     // Other electrons...
   ]);
   
