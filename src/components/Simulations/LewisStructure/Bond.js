@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { Line } from 'react-konva';
 
-const Bond = ({ points, x, y, onClone, handleClick, updateEntityPosition, entityType }) => {
+const Bond = ({ points, x, y, onClone, handleClick }) => {
   const bondRef = useRef();
 
   const handleCloneLocal = (e) => {
@@ -15,14 +15,6 @@ const Bond = ({ points, x, y, onClone, handleClick, updateEntityPosition, entity
 
   const handleClickLocal = () => {
     handleClick(bondRef.current);
-  };
-
-  const handleBondDrag = (e) => {
-    const id = e.target.id();
-    const newX = e.target.x();
-    const newY = e.target.y();
-
-    updateEntityPosition(id, newX, newY, entityType); 
   };
 
   return (
@@ -46,7 +38,6 @@ const Bond = ({ points, x, y, onClone, handleClick, updateEntityPosition, entity
       }}
       ref={bondRef}
       onClick={handleClickLocal}
-      onDragMove={handleBondDrag} 
     />
   );
 };

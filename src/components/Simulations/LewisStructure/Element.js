@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { Text } from 'react-konva';
 
-const Element = ({ x, y, text, onClone, handleClick, updateEntityPosition, entityType }) => {
+const Element = ({ x, y, text, onClone, handleClick }) => {
   const elementRef = useRef();
 
   const handleCloneLocal = (e) => {
@@ -15,14 +15,6 @@ const Element = ({ x, y, text, onClone, handleClick, updateEntityPosition, entit
 
   const handleClickLocal = () => {
     handleClick(elementRef.current);
-  };
-
-  const handleElementDrag = (e) => {
-    const id = e.target.id();
-    const newX = e.target.x();
-    const newY = e.target.y();
-
-    updateEntityPosition(id, newX, newY, entityType);
   };
 
   return (
@@ -47,7 +39,6 @@ const Element = ({ x, y, text, onClone, handleClick, updateEntityPosition, entit
         }}
         ref={elementRef}
         onClick={handleClickLocal}
-        onDragMove={handleElementDrag} 
       />
     </React.Fragment>
   );
