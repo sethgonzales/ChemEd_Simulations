@@ -30,21 +30,26 @@ const LewisStructure = () => {
     { id: uuidv4(), x: 220, y: 20 }, // Sample electron position
     // Other electrons...
   ]);
-  const handleCloneElement = ({ x, y, text }) => {
-    const newElement = { id: uuidv4(), x, y, text };
-    setElements([...elements, newElement]);
+  
+  const onClone = (type, item) => {
+    switch (type) {
+      case 'element':
+        const newElement = { id: uuidv4(), ...item };
+        setElements([...elements, newElement]);
+        break;
+      case 'bond':
+        const newBond = { id: uuidv4(), ...item };
+        setBonds([...bonds, newBond]);
+        break;
+      case 'electron':
+        const newElectron = { id: uuidv4(), ...item };
+        setElectrons([...electrons, newElectron]);
+        break;
+      default:
+        break;
+    }
   };
-
-  const handleCloneBond = ({ points, x, y }) => {
-    const newBond = { id: uuidv4(), points, x, y };
-    setBonds([...bonds, newBond]);
-  };
-
-  const handleCloneElectron = ({ x, y }) => {
-    const newElectron = { id: uuidv4(), x, y };
-    setElectrons([...electrons, newElectron]);
-  };
-
+  
   const handleStageClick = (e) => {
     // If the click target is the stage, deselect any selected elements
     if (e.target === e.target.getStage()) {
@@ -94,12 +99,8 @@ const LewisStructure = () => {
                   x={element.x}
                   y={element.y}
                   text={element.text}
-                  id={element.id}
-                  onClone={handleCloneElement}
-                  transformerRef={transformerRef}
-                  handleKeyPress={handleKeyPress} // Pass handleKeyPress as a prop
-                  handleClick={handleClick} // Pass handleClick as a prop
-
+                  onClone={(item) => onClone('element', item)}
+                  handleClick={handleClick} 
                 />
 
               ))}
@@ -111,9 +112,8 @@ const LewisStructure = () => {
                   points={bond.points}
                   x={bond.x}
                   y={bond.y}
-                  id={bond.id}
-                  onClone={handleCloneBond}
-                  transformerRef={transformerRef}
+                  onClone={(item) => onClone('bond', item)}
+                  handleClick={handleClick} 
                 />
               ))}
 
@@ -123,9 +123,8 @@ const LewisStructure = () => {
                   key={electron.id}
                   x={electron.x}
                   y={electron.y}
-                  id={electron.id} // Add an id attribute
-                  onClone={handleCloneElectron}
-                  transformerRef={transformerRef}
+                  onClone={(item) => onClone('electron', item)}
+                  handleClick={handleClick} 
                 />
               ))}
               <Transformer ref={transformerRef} />

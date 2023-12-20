@@ -1,40 +1,21 @@
 // Bond.js
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Line } from 'react-konva';
-import { v4 as uuidv4 } from 'uuid';
 
-const Bond = ({ points, x, y, onClone, transformerRef }) => {
-  const [selected, setSelected] = useState(false);
-  const elementRef = useRef();
+const Bond = ({ points, x, y, onClone, handleClick }) => {
+  const bondRef = useRef();
 
-  const handleClone = (e) => {
+  const handleCloneLocal = (e) => {
     if (onClone) {
       const newX = e.target.x();
       const newY = e.target.y();
-      const newId = uuidv4();
-      onClone({ id: newId, x: newX, y: newY, points });
+      onClone({ x: newX, y: newY, points });
     }
   };
 
-  const handleClick = () => {
-    const node = elementRef.current;
-    if (node && transformerRef.current) {
-      const isSelected = transformerRef.current.nodes().indexOf(node) !== -1;
-      if (isSelected) {
-        transformerRef.current.nodes([]);
-      } else {
-        transformerRef.current.nodes([node]);
-      }
-    }
+  const handleClickLocal = () => {
+    handleClick(bondRef.current);
   };
-
-  useEffect(() => {
-    if (transformerRef.current) {
-      const isSelected = transformerRef.current.nodes().indexOf(elementRef.current) !== -1;
-      setSelected(isSelected);
-    }
-  }, [transformerRef]);
-
 
   return (
     <Line
@@ -52,11 +33,11 @@ const Bond = ({ points, x, y, onClone, transformerRef }) => {
       }}
       onMouseDown={(e) => {
         if (e.evt.metaKey || e.evt.ctrlKey) {
-          handleClone(e);
+          handleCloneLocal(e);
         }
       }}
-      ref={elementRef}
-      onClick={handleClick}
+      ref={bondRef}
+      onClick={handleClickLocal}
     />
   );
 };
