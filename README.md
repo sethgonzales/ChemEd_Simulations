@@ -84,6 +84,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 11:00: undo like all of my work today...start again
 * 12:00: I FINALLY DID IT... can delete elements now with backspace
 * 12:30: refactor clone so that it is in parent object
+* 1:50: work on implementing undo/redo
 
 # _ChemEd Simulations_
 
