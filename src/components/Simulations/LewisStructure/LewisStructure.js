@@ -121,7 +121,14 @@ const LewisStructure = () => {
 
   return (
     <div className='simulation-page'>
+        <h1>Lewis Structures</h1>
       <div className='simulation-container'>
+        <div className='LS-element-container'>
+          <h3>How to Use: </h3>
+          <p>Click and drag items to move them around the board </p>
+          <p>Command click to create copies of items </p>
+          <p>Click items to transform, rotate, or delete </p>
+        </div>
         <div className='LS-container'>
           <Stage width={1000} height={400} onClick={handleStageClick}>
             <Layer>
