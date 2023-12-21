@@ -33,22 +33,26 @@ const LewisStructure = () => {
     { id: uuidv4(), x: 210, y: 130, text: 'Kr' },
     { id: uuidv4(), x: 175, y: 170, text: 'I' },
     { id: uuidv4(), x: 210, y: 170, text: 'Xe' },
-    // Other elements...
+    { id: uuidv4(), x: 15, y: 200, text: '[    ]' },
+    { id: uuidv4(), x: 25, y: 240, text: '-' },
+    { id: uuidv4(), x: 25, y: 280, text: '-2' },
+    { id: uuidv4(), x: 25, y: 320, text: '+' },
+    { id: uuidv4(), x: 25, y: 360, text: '+2' },
   ]);
 
   const [bonds, setBonds] = useState([
-    { id: uuidv4(), points: [0, 20, 40, 20], x: 310, y: 0 },
+    { id: uuidv4(), points: [0, 20, 40, 20], x: 100, y: 200 },
   ]);
   const [doubleBonds, setDoubleBonds] = useState([
-    { id: uuidv4(), x: 310, y: 50 },
+    { id: uuidv4(), x: 100, y: 260 },
   ]);
 
   const [electrons, setElectrons] = useState([
-    { id: uuidv4(), x: 400, y: 20 },
+    { id: uuidv4(), x: 200, y: 220 },
   ]);
 
   const [electronPair, setElectronPair] = useState([
-    { id: uuidv4(), x: 430, y: 20 },
+    { id: uuidv4(), x: 195, y: 270 },
   ]);
 
 
