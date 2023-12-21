@@ -15,36 +15,49 @@
 - _JS Canvas_
 - _JS Konva_
 
-
 ## Description
 
-_ChemEd Simulations is an [application](https://github.com/sethgonzales/ChemEd_Simulations/) for students to create accounts and utilize simulations that model scientific phenomenon. This is a react application with authorization and authentication._
+_ChemEd Simulations is an [application](https://github.com/sethgonzales/ChemEd_Simulations/) for students to create accounts and utilize simulations that model scientific phenomena. This is a React application with authorization and authentication._
+
+![Component Tree](./src/img/ChemEd%20Components.png)
 
 ## Setup and Installation Requirements
 
-* In terminal...
+* In the terminal...
   * Clone the repository from GitHub using `$ git clone https://github.com/sethgonzales/ChemEd_Simulations.git` and navigate to the project's root directory.
   * Run `$ npm install` from the root directory to install all packages.
   * Build the project from the root directory using `$ npm run build`.
   * Run the project on a server in your browser using `$ npm run start`.
-  * Or travel to the [hosted website](https://chemed-6a31a.web.app/).
+  * Or visit the [hosted website](https://chemed-6a31a.web.app/).
 
 ## General App Usage
-  * In App...
-    * Create and account (/register) and login (/login) to begin using the simulations. You can view (/account) and edit (/edit) your account info at any time
-    * Interact with the following simulations
-      * States of Matter
-        * Use the "Change State" button to switch between solid, liquid, and gas phase particles. Observe their behavior differences.
-      * Lewis Structures
-        * Build common Lewis Structures with full representation.
-          * 'command' + click to create clones 
-          * click on items to change their size or rotation
-          * press the 'delete' key while an item is selected to delete it from the page
+  * Create an account (/register) and log in (/login) to begin using the simulations. You can view (/account) and edit (/edit) your account info at any time.
+
+![Login Page](./src/img/login.png)
+
+  * Interact with the following simulations:
+  
+![Simulations Page](./src/img/simulations.png)
+
+  * States of Matter
+    * Use the "Change State" button to switch between solid, liquid, and gas phase particles. Observe their behavioral differences.
+
+![States Of Matter Page](./src/img/statesofmatter.png)
+
+  * Lewis Structures
+    * Build common Lewis Structures with full representation.
+      * 'command' + click to create clones 
+      * click on items to change their size or rotation
+      * press the 'delete' key while an item is selected to remove it from the page
+
+![States Of Matter Page](./src/img/lewisstructure.png)
 
 ## Known Bugs
 
 - _Triple bonds missing from Lewis Structures._
-- _If you find any additional bugs please report them to sethgonzales157@gmail.com_
+- _Copied Lewis Structure items do not maintain size._
+- _If you find any additional bugs, please report them to sethgonzales157@gmail.com._
+
 
 ## License
 
@@ -159,3 +172,4 @@ If you encounter any additional bugs, please report them to sethgonzales157@gmai
 ### Thursday, 12/21
 * 9:00: Begin working, work on double bond bugs
 * 9:30: Fix double bond bugs
+* 10:00: Complete README
