@@ -15,7 +15,7 @@ const LewisStructure = () => {
   const transformerRef = useRef(null);
 
   const [elements, setElements] = useState([
-    { id: uuidv4(), x: 10, y: 10, text: 'H' },
+    { id: uuidv4(), x: 15, y: 10, text: 'H' },
     { id: uuidv4(), x: 210, y: 10, text: 'He' },
     { id: uuidv4(), x: 35, y: 50, text: 'B' },
     { id: uuidv4(), x: 70, y: 50, text: 'C' },
