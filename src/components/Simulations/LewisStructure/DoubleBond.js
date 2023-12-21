@@ -20,6 +20,7 @@ const DoubleBond = ({ x, y, distanceApart = 10, onClone, handleClick }) => {
     handleClick(doubleBondRef.current);
   };
 
+
   const handleCloneLocal = () => {
     if (onClone) {
       onClone({ x: position.x, y: position.y });

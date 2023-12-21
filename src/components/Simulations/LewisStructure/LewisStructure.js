@@ -119,7 +119,7 @@ const LewisStructure = () => {
     <div className='simulation-page'>
       <div className='simulation-container'>
         <div className='LS-container'>
-          <Stage width={1200} height={400} onClick={handleStageClick}>
+          <Stage width={1000} height={400} onClick={handleStageClick}>
             <Layer>
               {/* Render elements */}
               {elements.map((element) => (
