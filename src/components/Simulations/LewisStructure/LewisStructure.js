@@ -33,26 +33,26 @@ const LewisStructure = () => {
     { id: uuidv4(), x: 210, y: 130, text: 'Kr' },
     { id: uuidv4(), x: 175, y: 170, text: 'I' },
     { id: uuidv4(), x: 210, y: 170, text: 'Xe' },
-    { id: uuidv4(), x: 15, y: 200, text: '[    ]' },
-    { id: uuidv4(), x: 25, y: 240, text: '-' },
-    { id: uuidv4(), x: 25, y: 280, text: '-2' },
-    { id: uuidv4(), x: 25, y: 320, text: '+' },
-    { id: uuidv4(), x: 25, y: 360, text: '+2' },
+    { id: uuidv4(), x: 300, y: 10, text: '[    ]' },
+    { id: uuidv4(), x: 370, y: 10, text: '-' },
+    { id: uuidv4(), x: 400, y: 10, text: '-2' },
+    { id: uuidv4(), x: 460, y: 10, text: '+' },
+    { id: uuidv4(), x: 490, y: 10, text: '+2' },
   ]);
 
   const [bonds, setBonds] = useState([
-    { id: uuidv4(), points: [0, 20, 40, 20], x: 100, y: 200 },
+    { id: uuidv4(), points: [0, 20, 40, 20], x: 300, y: 50 },
   ]);
   const [doubleBonds, setDoubleBonds] = useState([
-    { id: uuidv4(), x: 100, y: 260 },
+    { id: uuidv4(), x: 390, y: 72 },
   ]);
 
   const [electrons, setElectrons] = useState([
-    { id: uuidv4(), x: 200, y: 220 },
+    { id: uuidv4(), x: 320, y: 100 },
   ]);
 
   const [electronPair, setElectronPair] = useState([
-    { id: uuidv4(), x: 195, y: 270 },
+    { id: uuidv4(), x: 385, y: 100 },
   ]);
 
 
@@ -173,7 +173,6 @@ const LewisStructure = () => {
                   />
                 ))
               }
-              < Transformer ref={transformerRef} />
 
               {/* Render electrons */}
               {

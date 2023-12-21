@@ -38,6 +38,7 @@ const Bond = ({ points, x, y, onClone, handleClick }) => {
       }}
       ref={bondRef}
       onClick={handleClickLocal}
+      onTap={handleClickLocal}
     />
   );
 };

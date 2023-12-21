@@ -39,6 +39,7 @@ const Element = ({ x, y, text, onClone, handleClick }) => {
         }}
         ref={elementRef}
         onClick={handleClickLocal}
+        onTap={handleClickLocal}
       />
     </React.Fragment>
   );

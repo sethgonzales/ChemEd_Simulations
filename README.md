@@ -1,4 +1,71 @@
-Ye Olde Hosted Link: https://chemed-6a31a.web.app/
+# _ChemEd Simulations_
+
+#### By _**Seth Gonzales**_
+
+## Technologies Used
+
+- _JavaScript_
+- _HTML_
+- _CSS_
+- _Bootstrap_
+- _Node.js v18.17.1_
+- _NPM v9.6.7_
+- _React_
+- _JSX_
+- _JS Canvas_
+- _JS Konva_
+
+
+## Description
+
+_ChemEd Simulations is an [application](https://github.com/sethgonzales/ChemEd_Simulations/) for students to create accounts and utilize simulations that model scientific phenomenon. This is a react application with authorization and authentication._
+
+## Setup and Installation Requirements
+
+* In terminal...
+  * Clone the repository from GitHub using `$ git clone https://github.com/sethgonzales/ChemEd_Simulations.git` and navigate to the project's root directory.
+  * Run `$ npm install` from the root directory to install all packages.
+  * Build the project from the root directory using `$ npm run build`.
+  * Run the project on a server in your browser using `$ npm run start`.
+  * Or travel to the [hosted website](https://chemed-6a31a.web.app/).
+
+## General App Usage
+  * In App...
+    * Create and account (/register) and login (/login) to begin using the simulations. You can view (/account) and edit (/edit) your account info at any time
+    * Interact with the following simulations
+      * States of Matter
+        * Use the "Change State" button to switch between solid, liquid, and gas phase particles. Observe their behavior differences.
+      * Lewis Structures
+        * Build common Lewis Structures with full representation.
+          * 'command' + click to create clones 
+          * click on items to change their size or rotation
+          * press the 'delete' key while an item is selected to delete it from the page
+
+## Known Bugs
+
+- _Triple bonds missing from Lewis Structures._
+- _If you find any additional bugs please report them to sethgonzales157@gmail.com_
+
+## License
+
+MIT License
+
+```
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Copyright © 2023
+```
+
+## Contact Information
+
+If you encounter any additional bugs, please report them to sethgonzales157@gmail.com!
+
+<p align="center"><a href="#">Return to Top</a></p>
+
 
 ## Research & Planning Log
 ### Friday, 12/1
@@ -76,7 +143,7 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 3:40: add delete upon double click for elements
 * 4:20: continue delete refactor
 
-### Tuesday, 12/19
+### Wednesday, 12/20
 * 8:30: Begin working, work on resize bugs
 * 9:00: Fix resize issues
 * 9:40: begin refactor of click and delete to form factory functions
@@ -89,56 +156,6 @@ Ye Olde Hosted Link: https://chemed-6a31a.web.app/
 * 3:10: give up on copy bug... Move on to adding more elements
 * 3:50: Complete adding more elements and single electrons and double bonds
 
-# _ChemEd Simulations_
-
-#### By _**Seth Gonzales**_
-
-## Technologies Used
-
-- _JavaScript_
-- _HTML_
-- _CSS_
-- _Bootstrap_
-- _Node.js v18.17.1_
-- _NPM v9.6.7_
-- _React_
-- _JSX_
-- _JS Canvas_
-
-
-## Description
-
-_ChemEd Simulations is an [application](https://github.com/sethgonzales/ChemEd_Simulations/) for students to create accounts and utilize simulations that model phenomenon. This is a react application with authorization and authentication._
-
-## Setup/Installation Requirements
-
-* In terminal...
-  * Clone the repository from GitHub using `$ git clone https://github.com/sethgonzales/ChemEd_Simulations.git` and navigate to the project's root directory.
-  * Run `$ npm install` from the root directory to install all packages.
-  * Build the project from the root directory using `$ npm run build`.
-  * Run the project on a server in your browser using `$ npm run start`
-
-## Known Bugs
-
-- _Viewing not optimized for smaller screens._
-- _If you find any additional bugs please report them to sethgonzales157@gmail.com_
-
-## License
-
-MIT License
-
-```
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Copyright © 2023
-```
-
-## Contact Information
-
-If you encounter any additional bugs, please report them to sethgonzales157@gmail.com!
-
-<p align="center"><a href="#">Return to Top</a></p>
+### Thursday, 12/21
+* 9:00: Begin working, work on double bond bugs
+* 9:30: Fix double bond bugs

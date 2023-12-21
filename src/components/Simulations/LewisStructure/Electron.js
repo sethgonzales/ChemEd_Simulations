@@ -24,7 +24,7 @@ const Electron = ({ x, y, onClone, handleClick }) => {
         x={x}
         y={y}
         fill="white"
-        radius={3} 
+        radius={3}
         draggable
         onMouseOver={() => {
           document.body.style.cursor = 'pointer';
@@ -39,6 +39,7 @@ const Electron = ({ x, y, onClone, handleClick }) => {
         }}
         ref={electronRef}
         onClick={handleClickLocal}
+        onTap={handleClickLocal}
       />
     </React.Fragment>
 

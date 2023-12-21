@@ -1,4 +1,4 @@
-//Electron.js
+//ElectronPair.js
 import React, { useState, useRef } from 'react';
 import { Group, Circle } from 'react-konva';
 
@@ -45,6 +45,7 @@ const ElectronPair = ({ x, y, distanceApart = 10, onClone, handleClick }) => {
       }}
       ref={electronPairRef}
       onClick={handleClickLocal}
+      onTap={handleClickLocal}
     >
       <Circle radius={3} fill="white" />
       <Circle x={distanceApart} radius={3} fill="white" />
