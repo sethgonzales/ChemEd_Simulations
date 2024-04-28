@@ -28,8 +28,8 @@ const LiquidParticles = () => {
       for (let col = 0; col < columns && count < particleCount; col++) {
         const x = centerX + (col - columns / 2) * (particleSize + particleGap);
         const y = bottomY - row * (particleSize + particleGap);
-        const dx = (Math.random() - 0.5) * movementFactor;
-        const dy = (Math.random() - 0.5) * movementFactor;
+        const dx = (Math.random() - 0.3) * movementFactor;
+        const dy = (Math.random() - 0.3) * movementFactor;
         particles.push({ x, y, dx, dy, radius: particleSize / 2 });
         count++;
       }
@@ -38,18 +38,23 @@ const LiquidParticles = () => {
     function drawParticles() {
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-      particles.forEach(particle => {
+      particles.forEach((particle, index) => {
         ctx.beginPath();
-        ctx.fillStyle = '#fff';
+        if (index % 6 === 0) {
+          // Make every few particles purple to show dissolved compounds
+          ctx.fillStyle = '#6f056f'; // Purple color
+        } else {
+          ctx.fillStyle = '#fff'; // White color
+        }
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fill();
         ctx.closePath();
       });
     }
-
+  
     function updateParticles() {
-      const liquidMovementSpeed = .7;
-      const gravity = 0.002;
+      const liquidMovementSpeed = .5;
+      const gravity = 0.0;
 
       particles.forEach(particle => {
         particle.dy = Math.random() * liquidMovementSpeed * 2 - liquidMovementSpeed;

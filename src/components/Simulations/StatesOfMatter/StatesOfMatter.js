@@ -3,6 +3,7 @@ import './StatesOfMatter.css';
 import SolidParticles from './SolidParticles';
 import LiquidParticles from './LiquidParticles';
 import GasParticles from './GasParticles';
+import AqueousParticles from './AqueousParticles'
 import withAuthorization from './../../Account/withAuthorization';
 
 const StatesOfMatter = () => {
@@ -13,6 +14,8 @@ const StatesOfMatter = () => {
     if (currentState === 'Solid') {
       setCurrentState('Liquid');
     } else if (currentState === 'Liquid') {
+      setCurrentState('Aqueous');
+    } else if (currentState === 'Aqueous') {
       setCurrentState('Gas');
     } else {
       setCurrentState('Solid');
@@ -26,6 +29,7 @@ const StatesOfMatter = () => {
         <div id="SOM-container" className='SOM-container'>
           {currentState === 'Solid' && <SolidParticles />}
           {currentState === 'Liquid' && <LiquidParticles />}
+          {currentState === 'Aqueous' && <AqueousParticles />}
           {currentState === 'Gas' && <GasParticles />}
         </div>
         <div className='SOM-control'>
